@@ -4,6 +4,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\RegisterController;
+use App\Http\Controllers\UserController;
 
 /*
 |--------------------------------------------------------------------------
@@ -25,7 +26,14 @@ Route::post('/login', [LoginController::class, 'login']);
 
 //Protecting Routes
 Route::group(['middleware' => ['auth:sanctum']], function () {
+    // Route::get('/profile', function(Request $request) {
+    //     return auth()->user();
+    // });
+    // API route for logout user
     Route::post('/logout', 'LoginController@logout');
+    Route::resource('/profile', UserController::class);
+    // Route::post('/profile/update', 'UserController@update');
+    // Route::put('/post/{post:id}', 'PostController@update');
 });
 
 Route::post('/register', [RegisterController::class, 'store']);
