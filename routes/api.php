@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\RegisterController;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\SupportGroupController;
 
 /*
 |--------------------------------------------------------------------------
@@ -37,3 +38,6 @@ Route::group(['middleware' => ['auth:sanctum']], function () {
 });
 
 Route::post('/register', [RegisterController::class, 'store']);
+
+Route::get('/layanan/support-group/daftar', [SupportGroupController::class, 'index']);
+Route::post('/layanan/support-group/daftar', [SupportGroupController::class, 'store']);
