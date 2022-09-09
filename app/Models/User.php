@@ -9,6 +9,7 @@ use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
 
 use App\Models\SupportGroup;
+use App\Models\PeerCounseling;
 
 class User extends Authenticatable
 {
@@ -49,8 +50,13 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
     ];
 
-    public function users()
+    public function supportGroup()
     {
         return $this->hasMany(SupportGroup::class, 'user_id', 'id');
+    }
+
+    public function peerCounseling()
+    {
+        return $this->hasMany(PeerCounseling::class, 'user_id', 'id');
     }
 }

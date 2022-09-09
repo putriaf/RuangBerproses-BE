@@ -6,6 +6,7 @@ use App\Http\Controllers\LoginController;
 use App\Http\Controllers\RegisterController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\SupportGroupController;
+use App\Http\Controllers\PeerCounselingController;
 
 /*
 |--------------------------------------------------------------------------
@@ -39,5 +40,9 @@ Route::group(['middleware' => ['auth:sanctum']], function () {
 
 Route::post('/register', [RegisterController::class, 'store']);
 
+// Virtual Support Group 
 Route::get('/layanan/support-group/daftar', [SupportGroupController::class, 'index']);
 Route::post('/layanan/support-group/daftar', [SupportGroupController::class, 'store']);
+// Virtual Peer Counseling
+Route::get('/layanan/peer-counseling/daftar', [PeerCounselingController::class, 'index']);
+Route::post('/layanan/peer-counseling/daftar', [PeerCounselingController::class, 'store']);
