@@ -45,7 +45,6 @@ class SupportGroupController extends Controller
             'diagnosis' => 'required',
             'pernah_gabung' => 'required',
             'pengalaman' => 'required',
-            'diagnosis' => 'required',
             'fasilitator' => 'required',
             'teman_kelompok' => 'required',
             'alasan' => 'required',
