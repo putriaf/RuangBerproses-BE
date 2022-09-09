@@ -7,6 +7,7 @@ use App\Http\Controllers\RegisterController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\SupportGroupController;
 use App\Http\Controllers\PeerCounselingController;
+use App\Http\Controllers\ProfessionalCounselingController;
 
 /*
 |--------------------------------------------------------------------------
@@ -46,3 +47,6 @@ Route::post('/layanan/support-group/daftar', [SupportGroupController::class, 'st
 // Virtual Peer Counseling
 Route::get('/layanan/peer-counseling/daftar', [PeerCounselingController::class, 'index']);
 Route::post('/layanan/peer-counseling/daftar', [PeerCounselingController::class, 'store']);
+// Professional Counseling
+Route::get('/layanan/professional-counseling/daftar', [ProfessionalCounselingController::class, 'index']);
+Route::post('/layanan/professional-counseling/daftar', [ProfessionalCounselingController::class, 'store']);
