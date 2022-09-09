@@ -8,6 +8,7 @@ use App\Http\Controllers\UserController;
 use App\Http\Controllers\SupportGroupController;
 use App\Http\Controllers\PeerCounselingController;
 use App\Http\Controllers\ProfessionalCounselingController;
+use App\Http\Controllers\PsytalkController;
 
 /*
 |--------------------------------------------------------------------------
@@ -41,6 +42,7 @@ Route::group(['middleware' => ['auth:sanctum']], function () {
 
 Route::post('/register', [RegisterController::class, 'store']);
 
+// LAYANAN
 // Virtual Support Group 
 Route::get('/layanan/support-group/daftar', [SupportGroupController::class, 'index']);
 Route::post('/layanan/support-group/daftar', [SupportGroupController::class, 'store']);
@@ -50,3 +52,8 @@ Route::post('/layanan/peer-counseling/daftar', [PeerCounselingController::class,
 // Professional Counseling
 Route::get('/layanan/professional-counseling/daftar', [ProfessionalCounselingController::class, 'index']);
 Route::post('/layanan/professional-counseling/daftar', [ProfessionalCounselingController::class, 'store']);
+
+// PROGRAM
+// Psytalk
+Route::get('/program/psytalk/daftar', [PsytalkController::class, 'index']);
+Route::post('/program/psytalk/daftar', [PsytalkController::class, 'store']);

@@ -64,4 +64,9 @@ class User extends Authenticatable
     {
         return $this->hasMany(ProfessionalCounseling::class, 'user_id', 'id');
     }
+
+    public function psytalk()
+    {
+        return $this->hasMany(Psytalk::class, 'user_id', 'id');
+    }
 }
