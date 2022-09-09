@@ -76,7 +76,21 @@ class PeerCounselingController extends Controller
      */
     public function show($id)
     {
-        //
+        $peercounseling = PeerCounseling::select('peer_counselings.id', 'peer_counselings.user_id', 'peer_counselings.pengalaman', 'peer_counselings.konselor', 'peer_counselings.created_at', 'peer_counselings.updated_at', 'users.nama', 'users.foto_profil')
+        ->join('users', 'users.id', '=', 'peer_counselings.user_id')->where('peer_counselings.id', $id)->first();
+        if ($peercounseling) {
+            return response()->json([
+                'success' => true,
+                'message' => 'Detail Data Peer Counseling',
+                'data'    => $peercounseling
+            ], 200);
+        } else {
+            return response()->json([
+                'success' => false,
+                'message' => 'Data Peer Counseling tidak ditemukan!',
+                'data'    => ''
+            ], 404);
+        }
     }
 
     /**
@@ -87,7 +101,10 @@ class PeerCounselingController extends Controller
      */
     public function edit($id)
     {
-        //
+        return view('layanan.peerCounseling.edit', [
+            'title' => 'Edit Data',
+            'peercounseling' => PeerCounseling::where('id', $id)->first()
+        ]);
     }
 
     /**
@@ -99,7 +116,20 @@ class PeerCounselingController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $input = $request->all();
+        $peercounseling = PeerCounseling::find($id);
+        $peercounseling->update($input);
+        if ($peercounseling) {
+            return response()->json([
+                'success' => true,
+                'message' => 'Peer Counseling data has been successfully updated!',
+            ], 200);
+        } else {
+            return response()->json([
+                'success' => false,
+                'message' => 'Update Peer Counseling data is failed!',
+            ], 500);
+        }
     }
 
     /**
@@ -110,6 +140,17 @@ class PeerCounselingController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $peercounseling = PeerCounseling::destroy($id);
+        if ($peercounseling) {
+            return response()->json([
+                'success' => true,
+                'message' => 'Peer Counseling data has been deleted!',
+            ], 200);
+        } else {
+            return response()->json([
+                'success' => false,
+                'message' => 'Delete Peer Counseling data has been failed!',
+            ], 500);
+        }
     }
 }

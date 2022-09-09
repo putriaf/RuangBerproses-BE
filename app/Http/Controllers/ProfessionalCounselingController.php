@@ -70,9 +70,23 @@ class ProfessionalCounselingController extends Controller
      * @param  \App\Models\ProfessionalCounseling  $professionalCounseling
      * @return \Illuminate\Http\Response
      */
-    public function show(ProfessionalCounseling $professionalCounseling)
+    public function show($id)
     {
-        //
+        $professionalcounseling = ProfessionalCounseling::select('professional_counselings.id', 'professional_counselings.user_id', 'professional_counselings.status', 'professional_counselings.bukti_transfer', 'professional_counselings.created_at', 'professional_counselings.updated_at', 'users.nama', 'users.foto_profil')
+        ->join('users', 'users.id', '=', 'professional_counselings.user_id')->where('professional_counselings.id', $id)->first();
+        if ($professionalcounseling) {
+            return response()->json([
+                'success' => true,
+                'message' => 'Detail Data Professional Counseling',
+                'data'    => $professionalcounseling
+            ], 200);
+        } else {
+            return response()->json([
+                'success' => false,
+                'message' => 'Data Professional Counseling tidak ditemukan!',
+                'data'    => ''
+            ], 404);
+        }
     }
 
     /**
@@ -81,9 +95,12 @@ class ProfessionalCounselingController extends Controller
      * @param  \App\Models\ProfessionalCounseling  $professionalCounseling
      * @return \Illuminate\Http\Response
      */
-    public function edit(ProfessionalCounseling $professionalCounseling)
+    public function edit($id)
     {
-        //
+        return view('layanan.professionalCounseling.edit', [
+            'title' => 'Edit Data',
+            'professionalcounseling' => ProfessionalCounseling::where('id', $id)->first()
+        ]);
     }
 
     /**
@@ -93,9 +110,22 @@ class ProfessionalCounselingController extends Controller
      * @param  \App\Models\ProfessionalCounseling  $professionalCounseling
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, ProfessionalCounseling $professionalCounseling)
+    public function update(Request $request, $id)
     {
-        //
+        $input = $request->all();
+        $professionalcounseling = ProfessionalCounseling::find($id);
+        $professionalcounseling->update($input);
+        if ($professionalcounseling) {
+            return response()->json([
+                'success' => true,
+                'message' => 'Professional Counseling data has been successfully updated!',
+            ], 200);
+        } else {
+            return response()->json([
+                'success' => false,
+                'message' => 'Update Professional Counseling data is failed!',
+            ], 500);
+        }
     }
 
     /**
@@ -104,8 +134,19 @@ class ProfessionalCounselingController extends Controller
      * @param  \App\Models\ProfessionalCounseling  $professionalCounseling
      * @return \Illuminate\Http\Response
      */
-    public function destroy(ProfessionalCounseling $professionalCounseling)
+    public function destroy($id)
     {
-        //
+        $professionalcounseling = ProfessionalCounseling::destroy($id);
+        if ($professionalcounseling) {
+            return response()->json([
+                'success' => true,
+                'message' => 'Professional Counseling data has been deleted!',
+            ], 200);
+        } else {
+            return response()->json([
+                'success' => false,
+                'message' => 'Delete Professional Counseling data has been failed!',
+            ], 500);
+        }
     }
 }

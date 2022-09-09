@@ -76,7 +76,21 @@ class SupportGroupController extends Controller
      */
     public function show($id)
     {
-        //
+        $supportgroup = SupportGroup::select('support_groups.id', 'support_groups.user_id', 'support_groups.pengalaman', 'support_groups.fasilitator', 'support_groups.created_at', 'support_groups.updated_at', 'users.nama', 'users.foto_profil')
+        ->join('users', 'users.id', '=', 'support_groups.user_id')->where('support_groups.id', $id)->first();
+        if ($supportgroup) {
+            return response()->json([
+                'success' => true,
+                'message' => 'Detail Data Support Group',
+                'data'    => $supportgroup
+            ], 200);
+        } else {
+            return response()->json([
+                'success' => false,
+                'message' => 'Data Support Group tidak ditemukan!',
+                'data'    => ''
+            ], 404);
+        }
     }
 
     /**
@@ -87,7 +101,10 @@ class SupportGroupController extends Controller
      */
     public function edit($id)
     {
-        //
+        return view('layanan.supportGroup.edit', [
+            'title' => 'Edit Data',
+            'supportgroups' => SupportGroup::where('id', $id)->first()
+        ]);
     }
 
     /**
@@ -99,7 +116,20 @@ class SupportGroupController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $input = $request->all();
+        $supportgroup = SupportGroup::find($id);
+        $supportgroup->update($input);
+        if ($supportgroup) {
+            return response()->json([
+                'success' => true,
+                'message' => 'Support Group data has been successfully updated!',
+            ], 200);
+        } else {
+            return response()->json([
+                'success' => false,
+                'message' => 'Update Support Group data is failed!',
+            ], 500);
+        }
     }
 
     /**
@@ -110,6 +140,17 @@ class SupportGroupController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $supportgroup = SupportGroup::destroy($id);
+        if ($supportgroup) {
+            return response()->json([
+                'success' => true,
+                'message' => 'Support group data has been deleted!',
+            ], 200);
+        } else {
+            return response()->json([
+                'success' => false,
+                'message' => 'Delete upport group data has been failed!',
+            ], 500);
+        }
     }
 }

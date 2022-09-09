@@ -47,12 +47,21 @@ Route::post('/register', [RegisterController::class, 'store']);
 // Virtual Support Group 
 Route::get('/layanan/support-group/daftar', [SupportGroupController::class, 'index']);
 Route::post('/layanan/support-group/daftar', [SupportGroupController::class, 'store']);
+Route::get('/layanan/support-group/{id}', [SupportGroupController::class, 'show']);
+Route::put('/layanan/support-group/{id}', [SupportGroupController::class, 'update']);
+Route::delete('/layanan/support-group/{id}', [SupportGroupController::class, 'destroy']);
 // Virtual Peer Counseling
 Route::get('/layanan/peer-counseling/daftar', [PeerCounselingController::class, 'index']);
 Route::post('/layanan/peer-counseling/daftar', [PeerCounselingController::class, 'store']);
+Route::get('/layanan/peer-counseling/{id}', [PeerCounselingController::class, 'show']);
+Route::put('/layanan/peer-counseling/{id}', [PeerCounselingController::class, 'update']);
+Route::delete('/layanan/peer-counseling/{id}', [PeerCounselingController::class, 'destroy']);
 // Professional Counseling
 Route::get('/layanan/professional-counseling/daftar', [ProfessionalCounselingController::class, 'index']);
 Route::post('/layanan/professional-counseling/daftar', [ProfessionalCounselingController::class, 'store']);
+Route::get('/layanan/professional-counseling/{id}', [ProfessionalCounselingController::class, 'show']);
+Route::put('/layanan/professional-counseling/{id}', [ProfessionalCounselingController::class, 'update']);
+Route::delete('/layanan/professional-counseling/{id}', [ProfessionalCounselingController::class, 'destroy']);
 
 // PROGRAM
 // Psytalk
