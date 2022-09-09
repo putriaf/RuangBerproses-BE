@@ -39,19 +39,22 @@ class SupportGroupController extends Controller
      */
     public function store(Request $request)
     {
-        $supportgroup = SupportGroup::create([
-            'topik' => $request->input('topik'),
-            'diagnosis' => $request->input('diagnosis'),
-            'pernah_gabung' => $request->input('pernah_gabung'),
-            'pengalaman' => $request->input('pengalaman'),
-            'fasilitator' => $request->input('fasilitator'),
-            'teman_kelompok' => $request->input('teman_kelompok'),
-            'alasan' => $request->input('alasan'),
-            'batasan_pribadi' => $request->input('batasan_pribadi'),
-            'harapan' => $request->input('harapan'),
-            'bukti_transfer' => $request->input('bukti_transfer'),
-            'user_id' => $request->input('user_id')
+        $validatedData = $request->validate([
+            'user_id' => 'required',
+            'topik' => 'required',
+            'diagnosis' => 'required',
+            'pernah_gabung' => 'required',
+            'pengalaman' => 'required',
+            'diagnosis' => 'required',
+            'fasilitator' => 'required',
+            'teman_kelompok' => 'required',
+            'alasan' => 'required',
+            'batasan_pribadi' => 'required',
+            'harapan' => 'required',
+            'bukti_transfer' => 'required',
         ]);
+
+        $supportgroup = SupportGroup::create($validatedData);
 
         if ($supportgroup) {
             return response()->json([
