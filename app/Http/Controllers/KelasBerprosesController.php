@@ -75,7 +75,21 @@ class KelasBerprosesController extends Controller
      */
     public function show($id)
     {
-        //
+        $kelasberproses = KelasBerproses::select('kelas_berproses.id', 'kelas_berproses.user_id', 'kelas_berproses.pilihan_kelasberproses', 'kelas_berproses.bukti_transfer', 'kelas_berproses.created_at', 'kelas_berproses.updated_at', 'users.nama', 'users.foto_profil')
+        ->join('users', 'users.id', '=', 'kelas_berproses.user_id')->where('kelas_berproses.id', $id)->first();
+        if ($kelasberproses) {
+            return response()->json([
+                'success' => true,
+                'message' => 'Detail Data Kelas Berproses',
+                'data'    => $kelasberproses
+            ], 200);
+        } else {
+            return response()->json([
+                'success' => false,
+                'message' => 'Data Kelas Berproses tidak ditemukan!',
+                'data'    => ''
+            ], 404);
+        }
     }
 
     /**
@@ -86,7 +100,10 @@ class KelasBerprosesController extends Controller
      */
     public function edit($id)
     {
-        //
+        return view('layanan.kelasBerproses.edit', [
+            'title' => 'Edit Data',
+            'kelasberproses' => KelasBerproses::where('id', $id)->first()
+        ]);
     }
 
     /**
@@ -98,7 +115,20 @@ class KelasBerprosesController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $input = $request->all();
+        $kelasberproses = KelasBerproses::find($id);
+        $kelasberproses->update($input);
+        if ($kelasberproses) {
+            return response()->json([
+                'success' => true,
+                'message' => 'Kelas Berproses data has been successfully updated!',
+            ], 200);
+        } else {
+            return response()->json([
+                'success' => false,
+                'message' => 'Update Kelas Berproses data is failed!',
+            ], 500);
+        }
     }
 
     /**
@@ -109,6 +139,17 @@ class KelasBerprosesController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $kelasberproses = KelasBerproses::destroy($id);
+        if ($kelasberproses) {
+            return response()->json([
+                'success' => true,
+                'message' => 'Kelas Berproses data has been deleted!',
+            ], 200);
+        } else {
+            return response()->json([
+                'success' => false,
+                'message' => 'Delete Kelas Berproses data has been failed!',
+            ], 500);
+        }
     }
 }

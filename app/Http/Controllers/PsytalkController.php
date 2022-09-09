@@ -75,7 +75,21 @@ class PsytalkController extends Controller
      */
     public function show($id)
     {
-        //
+        $psytalk = Psytalk::select('psytalks.id', 'psytalks.user_id', 'psytalks.pilihan_webinar', 'psytalks.bukti_transfer', 'psytalks.created_at', 'psytalks.updated_at', 'users.nama', 'users.foto_profil')
+        ->join('users', 'users.id', '=', 'psytalks.user_id')->where('psytalks.id', $id)->first();
+        if ($psytalk) {
+            return response()->json([
+                'success' => true,
+                'message' => 'Detail Data Psytalk',
+                'data'    => $psytalk
+            ], 200);
+        } else {
+            return response()->json([
+                'success' => false,
+                'message' => 'Data Psytalk tidak ditemukan!',
+                'data'    => ''
+            ], 404);
+        }
     }
 
     /**
@@ -86,7 +100,10 @@ class PsytalkController extends Controller
      */
     public function edit($id)
     {
-        //
+        return view('layanan.psytalk.edit', [
+            'title' => 'Edit Data',
+            'psytalk' => Psytalk::where('id', $id)->first()
+        ]);
     }
 
     /**
@@ -98,7 +115,20 @@ class PsytalkController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $input = $request->all();
+        $psytalk = Psytalk::find($id);
+        $psytalk->update($input);
+        if ($psytalk) {
+            return response()->json([
+                'success' => true,
+                'message' => 'Psytalk data has been successfully updated!',
+            ], 200);
+        } else {
+            return response()->json([
+                'success' => false,
+                'message' => 'Update Psytalk data is failed!',
+            ], 500);
+        }
     }
 
     /**
@@ -109,6 +139,17 @@ class PsytalkController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $psytalk = Psytalk::destroy($id);
+        if ($psytalk) {
+            return response()->json([
+                'success' => true,
+                'message' => 'Psytalk data has been deleted!',
+            ], 200);
+        } else {
+            return response()->json([
+                'success' => false,
+                'message' => 'Delete Psytalk data has been failed!',
+            ], 500);
+        }
     }
 }

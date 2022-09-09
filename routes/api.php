@@ -67,6 +67,12 @@ Route::delete('/layanan/professional-counseling/{id}', [ProfessionalCounselingCo
 // Psytalk
 Route::get('/program/psytalk/daftar', [PsytalkController::class, 'index']);
 Route::post('/program/psytalk/daftar', [PsytalkController::class, 'store']);
+Route::get('/program/psytalk/{id}', [PsytalkController::class, 'show']);
+Route::put('/program/psytalk/{id}', [PsytalkController::class, 'update']);
+Route::delete('/program/psytalk/{id}', [PsytalkController::class, 'destroy']);
 // Kelas Berproses
 Route::get('/program/kelas-berproses/daftar', [KelasBerprosesController::class, 'index']);
 Route::post('/program/kelas-berproses/daftar', [KelasBerprosesController::class, 'store']);
+Route::get('/program/kelas-berproses/{id}', [KelasBerprosesController::class, 'show']);
+Route::put('/program/kelas-berproses/{id}', [KelasBerprosesController::class, 'update']);
+Route::delete('/program/kelas-berproses/{id}', [KelasBerprosesController::class, 'destroy']);
