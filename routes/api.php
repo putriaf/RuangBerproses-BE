@@ -9,6 +9,7 @@ use App\Http\Controllers\SupportGroupController;
 use App\Http\Controllers\PeerCounselingController;
 use App\Http\Controllers\ProfessionalCounselingController;
 use App\Http\Controllers\PsytalkController;
+use App\Http\Controllers\KelasBerprosesController;
 
 /*
 |--------------------------------------------------------------------------
@@ -57,3 +58,6 @@ Route::post('/layanan/professional-counseling/daftar', [ProfessionalCounselingCo
 // Psytalk
 Route::get('/program/psytalk/daftar', [PsytalkController::class, 'index']);
 Route::post('/program/psytalk/daftar', [PsytalkController::class, 'store']);
+// Kelas Berproses
+Route::get('/program/kelas-berproses/daftar', [KelasBerprosesController::class, 'index']);
+Route::post('/program/kelas-berproses/daftar', [KelasBerprosesController::class, 'store']);

@@ -10,6 +10,7 @@ use Laravel\Sanctum\HasApiTokens;
 
 use App\Models\SupportGroup;
 use App\Models\PeerCounseling;
+use App\Models\KelasBerproses;
 
 class User extends Authenticatable
 {
@@ -68,5 +69,10 @@ class User extends Authenticatable
     public function psytalk()
     {
         return $this->hasMany(Psytalk::class, 'user_id', 'id');
+    }
+
+    public function kelasBerproses()
+    {
+        return $this->hasMany(KelasBerproses::class, 'user_id', 'id');
     }
 }
