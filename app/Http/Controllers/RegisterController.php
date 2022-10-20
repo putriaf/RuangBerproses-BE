@@ -17,6 +17,7 @@ class RegisterController extends Controller
             'email' => 'required|email:dns|unique:users',
             'no_telp' => 'required|numeric|digits_between:10,14',
             'jk' => 'required|max:1',
+            'tgl_lahir' => 'required',
             'password' => 'required|min:5|max:255',
             'role' => 'required',
         ]);
