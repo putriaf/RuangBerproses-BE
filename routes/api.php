@@ -7,6 +7,7 @@ use App\Http\Controllers\RegisterController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\SupportGroupController;
 use App\Http\Controllers\PeerCounselingController;
+use App\Http\Controllers\ListProfessionalCounselingController;
 use App\Http\Controllers\ProfessionalCounselingController;
 use App\Http\Controllers\PsytalkController;
 use App\Http\Controllers\KelasBerprosesController;
