@@ -2,10 +2,9 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\ListProfessionalCounseling;
 use Illuminate\Http\Request;
 
-class ListProfessionalCounselingController extends Controller
+class RegistrationProCounseling extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -36,22 +35,25 @@ class ListProfessionalCounselingController extends Controller
     public function store(Request $request)
     {
         $validatedData = $request->validate([
-            'nama_konselor' => 'required',
-            'waktu' => 'required',
-            'biaya' => 'required'
+            'user_id' => 'required',
+            'procounseling_id' => 'required',
+            'consent_sharing' => 'required',
+            'consent_screening' => 'required',
+            'bukti_transfer' => 'required',
+            'status_pendaftaran' => 'required'
         ]);
 
-        $listprofessionalcounseling = ListProfessionalCounseling::create($validatedData);
+        $regprocounseling = RegistrationProCounseling::create($validatedData);
 
-        if ($listprofessionalcounseling) {
+        if ($regprocounseling) {
             return response()->json([
                 'success' => true,
-                'message' => 'Daftar Professional Counseling Berhasil Ditambahkan!',
+                'message' => 'Pendaftaran Professional Counseling Berhasil!',
             ], 200);
         } else {
             return response()->json([
                 'success' => false,
-                'message' => 'Penambahan Daftar Professional Counseling Gagal!',
+                'message' => 'Pendaftaran Professional Counseling Gagal!',
             ], 400);
         }
     }
@@ -59,10 +61,10 @@ class ListProfessionalCounselingController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\ListProfessionalCounseling  $listProfessionalCounseling
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show(ListProfessionalCounseling $listProfessionalCounseling)
+    public function show($id)
     {
         //
     }
@@ -70,31 +72,34 @@ class ListProfessionalCounselingController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\ListProfessionalCounseling  $professionalCounseling
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
     public function edit($id)
     {
+        //
     }
 
     /**
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\ListProfessionalCounseling  $professionalCounseling
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, $id)
     {
+        //
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\ListProfessionalCounseling  $professionalCounseling
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
     public function destroy($id)
     {
+        //
     }
 }

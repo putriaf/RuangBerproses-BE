@@ -11,6 +11,7 @@ use App\Http\Controllers\ListProfessionalCounselingController;
 use App\Http\Controllers\ProfessionalCounselingController;
 use App\Http\Controllers\PsytalkController;
 use App\Http\Controllers\KelasBerprosesController;
+use App\Http\Controllers\RegistrationProCounseling;
 
 /*
 |--------------------------------------------------------------------------
@@ -58,17 +59,17 @@ Route::get('/layanan/peer-counseling/{id}', [PeerCounselingController::class, 's
 Route::put('/layanan/peer-counseling/{id}', [PeerCounselingController::class, 'update']);
 Route::delete('/layanan/peer-counseling/{id}', [PeerCounselingController::class, 'destroy']);
 // Professional Counseling
-Route::get('/layanan/professional-counseling/daftar', [ProfessionalCounselingController::class, 'index']);
-Route::post('/layanan/professional-counseling/daftar', [ProfessionalCounselingController::class, 'store']);
+Route::get('/layanan/professional-counseling/tambah', [ProfessionalCounselingController::class, 'index']);
+Route::post('/layanan/professional-counseling/tambah', [ProfessionalCounselingController::class, 'store']);
 Route::get('/layanan/professional-counseling/{id}', [ProfessionalCounselingController::class, 'show']);
 Route::put('/layanan/professional-counseling/{id}', [ProfessionalCounselingController::class, 'update']);
 Route::delete('/layanan/professional-counseling/{id}', [ProfessionalCounselingController::class, 'destroy']);
 // List Professional Counseling
-Route::get('/admin/layanan/list-procounseling/tambah', [ListProfessionalCounselingController::class, 'index']);
-Route::post('/admin/layanan/list-procounseling/tambah', [ListProfessionalCounselingController::class, 'store']);
-Route::get('/admin/layanan/list-procounseling/{id}', [ListProfessionalCounselingController::class, 'show']);
-Route::put('/admin/layanan/list-procounseling/{id}', [ListProfessionalCounselingController::class, 'update']);
-Route::delete('/admin/layanan/list-procounseling/{id}', [ListProfessionalCounselingController::class, 'destroy']);
+Route::get('/admin/layanan/professional-counseling/daftar', [RegistrationProCounseling::class, 'index']);
+Route::post('/admin/layanan/professional-counseling/daftar', [RegistrationProCounseling::class, 'store']);
+Route::get('/admin/layanan/professional-counseling/{id}', [RegistrationProCounseling::class, 'show']);
+Route::put('/admin/layanan/professional-counseling/{id}', [RegistrationProCounseling::class, 'update']);
+Route::delete('/admin/layanan/professional-counseling/{id}', [RegistrationProCounseling::class, 'destroy']);
 
 // PROGRAM
 // Psytalk

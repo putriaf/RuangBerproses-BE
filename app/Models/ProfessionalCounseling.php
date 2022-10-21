@@ -13,6 +13,6 @@ class ProfessionalCounseling extends Model
 
     public function professionalCounseling()
     {
-        return $this->belongsToMany(User::class);
+        return $this->belongsToMany(RegistrationProCounseling::class);
     }
 }

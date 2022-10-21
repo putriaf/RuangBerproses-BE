@@ -39,11 +39,9 @@ class ProfessionalCounselingController extends Controller
     public function store(Request $request)
     {
         $validatedData = $request->validate([
-            'user_id' => 'required',
-            'list_professional_counseling_id' => 'required',
-            'consent_sharing' => 'required',
-            'consent_screening' => 'required',
-            'bukti_transfer' => 'required'
+            'nama_konselor' => 'required',
+            'waktu' => 'required',
+            'biaya' => 'required'
         ]);
 
         $professionalcounseling = ProfessionalCounseling::create($validatedData);

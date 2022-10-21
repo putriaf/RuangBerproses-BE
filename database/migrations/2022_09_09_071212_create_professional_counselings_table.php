@@ -15,11 +15,9 @@ return new class extends Migration
     {
         Schema::create('professional_counselings', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('user_id')->constrained('users');
-            $table->foreignId('list_professional_counseling_id')->constrained('list_professional_counselings');
-            $table->string('consent_sharing');
-            $table->string('consent_screening');
-            $table->string('bukti_transfer')->nullable();
+            $table->string('nama_konselor');
+            $table->string('waktu');
+            $table->string('biaya');
             $table->timestamps();
         });
     }
