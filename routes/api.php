@@ -62,6 +62,12 @@ Route::post('/layanan/professional-counseling/daftar', [ProfessionalCounselingCo
 Route::get('/layanan/professional-counseling/{id}', [ProfessionalCounselingController::class, 'show']);
 Route::put('/layanan/professional-counseling/{id}', [ProfessionalCounselingController::class, 'update']);
 Route::delete('/layanan/professional-counseling/{id}', [ProfessionalCounselingController::class, 'destroy']);
+// List Professional Counseling
+Route::get('/admin/layanan/list-procounseling/tambah', [ListProfessionalCounselingController::class, 'index']);
+Route::post('/admin/layanan/list-procounseling/tambah', [ListProfessionalCounselingController::class, 'store']);
+Route::get('/admin/layanan/list-procounseling/{id}', [ListProfessionalCounselingController::class, 'show']);
+Route::put('/admin/layanan/list-procounseling/{id}', [ListProfessionalCounselingController::class, 'update']);
+Route::delete('/admin/layanan/list-procounseling/{id}', [ListProfessionalCounselingController::class, 'destroy']);
 
 // PROGRAM
 // Psytalk
