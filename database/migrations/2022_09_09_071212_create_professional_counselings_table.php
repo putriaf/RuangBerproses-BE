@@ -16,10 +16,7 @@ return new class extends Migration
         Schema::create('professional_counselings', function (Blueprint $table) {
             $table->id();
             $table->foreignId('user_id')->constrained('users');
-            $table->string('status');
-            $table->text('pendidikan_terakhir');
-            $table->string('pekerjaan');
-            $table->string('domisili');
+            $table->foreignId('list_professional_counseling_id')->constrained('list_professional_counselings');
             $table->string('consent_sharing');
             $table->string('consent_screening');
             $table->string('bukti_transfer')->nullable();

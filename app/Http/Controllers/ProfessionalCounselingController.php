@@ -40,10 +40,7 @@ class ProfessionalCounselingController extends Controller
     {
         $validatedData = $request->validate([
             'user_id' => 'required',
-            'status' => 'required',
-            'pendidikan_terakhir' => 'required',
-            'pekerjaan' => 'required',
-            'domisili' => 'required',
+            'list_professional_counseling_id' => 'required',
             'consent_sharing' => 'required',
             'consent_screening' => 'required',
             'bukti_transfer' => 'required'
@@ -73,7 +70,7 @@ class ProfessionalCounselingController extends Controller
     public function show($id)
     {
         $professionalcounseling = ProfessionalCounseling::select('professional_counselings.id', 'professional_counselings.user_id', 'professional_counselings.status', 'professional_counselings.bukti_transfer', 'professional_counselings.created_at', 'professional_counselings.updated_at', 'users.nama', 'users.foto_profil')
-        ->join('users', 'users.id', '=', 'professional_counselings.user_id')->where('professional_counselings.id', $id)->first();
+            ->join('users', 'users.id', '=', 'professional_counselings.user_id')->where('professional_counselings.id', $id)->first();
         if ($professionalcounseling) {
             return response()->json([
                 'success' => true,
