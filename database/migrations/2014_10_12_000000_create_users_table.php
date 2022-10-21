@@ -22,6 +22,7 @@ return new class extends Migration
             $table->string('password');
             $table->char('jk', 1)->nullable();
             $table->string('no_telp');
+            $table->string('tgl_lahir');
             $table->string('foto_profil')->nullable();
             $table->enum('role', array('0', '1'))->default('0');
             $table->string('agama')->nullable();
