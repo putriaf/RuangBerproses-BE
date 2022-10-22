@@ -43,19 +43,19 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
     ];
 
-    public function supportGroup()
+    public function regSupportGroup()
     {
-        return $this->hasMany(SupportGroup::class, 'user_id', 'id');
+        return $this->hasMany(RegistrationSupportGroup::class, 'user_id', 'id');
     }
 
-    public function peerCounseling()
+    public function regPeerCounseling()
     {
-        return $this->hasMany(PeerCounseling::class, 'user_id', 'id');
+        return $this->hasMany(RegistrationPeerCounseling::class, 'user_id', 'id');
     }
 
-    public function professionalCounseling()
+    public function regProfessionalCounseling()
     {
-        return $this->hasMany(ProfessionalCounseling::class, 'user_id', 'id');
+        return $this->hasMany(RegistrationProCounseling::class, 'user_id', 'id');
     }
 
     public function psytalk()

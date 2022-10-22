@@ -25,10 +25,7 @@ class PsytalkController extends Controller
      */
     public function create()
     {
-        return view('layanan.psytalk.daftar', [
-            'title' => 'Daftar Psytalk',
-            'message' => NULL
-        ]);
+        //
     }
 
     /**
@@ -40,16 +37,10 @@ class PsytalkController extends Controller
     public function store(Request $request)
     {
         $validatedData = $request->validate([
-            'user_id' => 'required',
-            'usia' => 'required',
-            'pilihan_webinar' => 'required',
-            'domisili' => 'required',
-            'pekerjaan' => 'required',
-            'alasan' => 'required',
-            'pernah_gabung' => 'required',
-            'pertanyaan' => 'required',
-            'sumber_info' => 'required',
-            'bukti_transfer' => 'required'
+            'topik' => 'required',
+            'pembicara' => 'required',
+            'waktu' => 'required',
+            'biaya' => 'required'
         ]);
 
         $psytalk = Psytalk::create($validatedData);
@@ -75,8 +66,8 @@ class PsytalkController extends Controller
      */
     public function show($id)
     {
-        $psytalk = Psytalk::select('psytalks.id', 'psytalks.user_id', 'psytalks.pilihan_webinar', 'psytalks.bukti_transfer', 'psytalks.created_at', 'psytalks.updated_at', 'users.nama', 'users.foto_profil')
-        ->join('users', 'users.id', '=', 'psytalks.user_id')->where('psytalks.id', $id)->first();
+        $psytalk = Psytalk::select('psytalks.id', 'psytalks.topik', 'psytalks.pembicara', 'psytalks.waktu', 'psytalks.biaya', 'psytalks.created_at', 'psytalks.updated_at')
+            ->where('psytalks.id', $id)->first();
         if ($psytalk) {
             return response()->json([
                 'success' => true,
@@ -100,10 +91,7 @@ class PsytalkController extends Controller
      */
     public function edit($id)
     {
-        return view('layanan.psytalk.edit', [
-            'title' => 'Edit Data',
-            'psytalk' => Psytalk::where('id', $id)->first()
-        ]);
+        //
     }
 
     /**

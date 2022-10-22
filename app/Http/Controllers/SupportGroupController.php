@@ -40,17 +40,11 @@ class SupportGroupController extends Controller
     public function store(Request $request)
     {
         $validatedData = $request->validate([
-            'user_id' => 'required',
             'topik' => 'required',
-            'diagnosis' => 'required',
-            'pernah_gabung' => 'required',
-            'pengalaman' => 'required',
-            'fasilitator' => 'required',
-            'teman_kelompok' => 'required',
-            'alasan' => 'required',
-            'batasan_pribadi' => 'required',
-            'harapan' => 'required',
-            'bukti_transfer' => 'required',
+            'fasilitator_utama' => 'required',
+            'fasilitator_pendamping' => 'required',
+            'waktu' => 'required',
+            'biaya' => 'required'
         ]);
 
         $supportgroup = SupportGroup::create($validatedData);
@@ -76,8 +70,8 @@ class SupportGroupController extends Controller
      */
     public function show($id)
     {
-        $supportgroup = SupportGroup::select('support_groups.id', 'support_groups.user_id', 'support_groups.pengalaman', 'support_groups.fasilitator', 'support_groups.created_at', 'support_groups.updated_at', 'users.nama', 'users.foto_profil')
-        ->join('users', 'users.id', '=', 'support_groups.user_id')->where('support_groups.id', $id)->first();
+        $supportgroup = SupportGroup::select('support_groups.id', 'support_groups.topik', 'support_groups.fasilitator_utama', 'support_groups.fasilitator_pendamping', 'support_groups.waktu', 'support_groups.biaya', 'support_groups.created_at', 'support_groups.updated_at')
+            ->where('support_groups.id', $id)->first();
         if ($supportgroup) {
             return response()->json([
                 'success' => true,
@@ -101,10 +95,7 @@ class SupportGroupController extends Controller
      */
     public function edit($id)
     {
-        return view('layanan.supportGroup.edit', [
-            'title' => 'Edit Data',
-            'supportgroups' => SupportGroup::where('id', $id)->first()
-        ]);
+        //
     }
 
     /**

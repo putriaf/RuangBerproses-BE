@@ -13,8 +13,8 @@ class Psytalk extends Model
 
     protected $guarded = ['id'];
 
-    public function psytalk()
+    public function regPsytalk()
     {
-        return $this->belongsToMany(User::class);
+        return $this->hasMany(RegistrationPsytalk::class, 'psytalk_id', 'id');
     }
 }

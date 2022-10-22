@@ -2,11 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\ProfessionalCounseling;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Log;
+use App\Models\RegistrationPsytalk;
 
-class ProfessionalCounselingController extends Controller
+class RegistrationPsytalkController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -36,25 +35,28 @@ class ProfessionalCounselingController extends Controller
      */
     public function store(Request $request)
     {
-        Log::info("test");
         $validatedData = $request->validate([
-            'nama_konselor' => 'required',
-            'waktu' => 'required',
-            'biaya' => 'required'
+            'user_id' => 'required',
+            'psytalk_id' => 'required',
+            'alasan' => 'required',
+            'asal_info' => 'required',
+            'pertanyaan' => 'required',
+            'bukti_transfer' => '',
+            'status_pendaftaran' => 'required',
+            'ide_topik' => 'required'
         ]);
-        Log::info($validatedData);
 
-        $professionalcounseling = ProfessionalCounseling::create($validatedData);
+        $regpsytalk = RegistrationPsytalk::create($validatedData);
 
-        if ($professionalcounseling) {
+        if ($regpsytalk) {
             return response()->json([
                 'success' => true,
-                'message' => 'Pendaftaran Professional Counseling Berhasil!',
+                'message' => 'Pendaftaran Psytalk Berhasil!',
             ], 200);
         } else {
             return response()->json([
                 'success' => false,
-                'message' => 'Pendaftaran Professional Counseling Gagal!',
+                'message' => 'Pendaftaran Psytalk Gagal!',
             ], 400);
         }
     }
@@ -62,22 +64,23 @@ class ProfessionalCounselingController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\ProfessionalCounseling  $professionalCounseling
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
     public function show($id)
     {
-        $professionalcounseling = ProfessionalCounseling::select('professional_counselings.id', 'professional_counselings.nama_konselor', 'professional_counselings.waktu', 'professional_counselings.biaya', 'professional_counselings.created_at', 'professional_counselings.updated_at')->where('professional_counselings.id', $id)->first();
-        if ($professionalcounseling) {
+        $psytalkdata = RegistrationPsytalk::select('registration_psytalks.id', 'registration_psytalks.user_id', 'registration_psytalks.psytalk_id', 'registration_psytalks.alasan', 'registration_psytalks.asal_info', 'registration_psytalks.pertanyaan', 'registration_psytalks.bukti_transfer', 'registration_psytalks.status_pendaftaran', 'registration_psytalks.ide_topik',)
+            ->join('users', 'users.id', '=', 'registration_psytalks.user_id')->join('psytalks', 'psytalks.id', '=', 'registration_psytalks.psytalk_id')->where('registration_psytalks.id', $id)->first();
+        if ($psytalkdata) {
             return response()->json([
                 'success' => true,
-                'message' => 'Detail Data Professional Counseling',
-                'data'    => $professionalcounseling
+                'message' => 'Detail Data Pendaftaran Psytalk',
+                'data'    => $psytalkdata
             ], 200);
         } else {
             return response()->json([
                 'success' => false,
-                'message' => 'Data Professional Counseling tidak ditemukan!',
+                'message' => 'Data Pendaftaran Psytalk!',
                 'data'    => ''
             ], 404);
         }
@@ -86,7 +89,7 @@ class ProfessionalCounselingController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\ProfessionalCounseling  $professionalCounseling
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
     public function edit($id)
@@ -98,23 +101,23 @@ class ProfessionalCounselingController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\ProfessionalCounseling  $professionalCounseling
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, $id)
     {
         $input = $request->all();
-        $professionalcounseling = ProfessionalCounseling::find($id);
-        $professionalcounseling->update($input);
-        if ($professionalcounseling) {
+        $regpsytalk = RegistrationPsytalk::find($id);
+        $regpsytalk->update($input);
+        if ($regpsytalk) {
             return response()->json([
                 'success' => true,
-                'message' => 'Professional Counseling data has been successfully updated!',
+                'message' => 'Psytalk Registration data has been successfully updated!',
             ], 200);
         } else {
             return response()->json([
                 'success' => false,
-                'message' => 'Update Professional Counseling data is failed!',
+                'message' => 'Update Psytalk Registration data is failed!',
             ], 500);
         }
     }
@@ -122,21 +125,21 @@ class ProfessionalCounselingController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\ProfessionalCounseling  $professionalCounseling
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
     public function destroy($id)
     {
-        $professionalcounseling = ProfessionalCounseling::destroy($id);
-        if ($professionalcounseling) {
+        $regpsytalk = RegistrationPsytalk::destroy($id);
+        if ($regpsytalk) {
             return response()->json([
                 'success' => true,
-                'message' => 'Professional Counseling data has been deleted!',
+                'message' => 'Psytalk Registration data has been deleted!',
             ], 200);
         } else {
             return response()->json([
                 'success' => false,
-                'message' => 'Delete Professional Counseling data has been failed!',
+                'message' => 'Delete Psytalk Registration data has been failed!',
             ], 500);
         }
     }

@@ -5,7 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-use App\Http\Models\User;
+use App\Http\Models\RegistrationSupportGroup;
 
 class SupportGroup extends Model
 {
@@ -13,8 +13,8 @@ class SupportGroup extends Model
 
     protected $guarded = ['id'];
 
-    public function user()
+    public function regSupportGroup()
     {
-        return $this->belongsTo(User::class);
+        return $this->hasMany(RegistrationSupportGroup::class, 'procounseling_id', 'id');
     }
 }

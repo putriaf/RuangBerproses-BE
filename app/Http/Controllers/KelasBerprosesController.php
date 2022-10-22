@@ -25,10 +25,7 @@ class KelasBerprosesController extends Controller
      */
     public function create()
     {
-        return view('layanan.kelasBerproses.daftar', [
-            'title' => 'Daftar Kelas Berproses',
-            'message' => NULL
-        ]);
+        //
     }
 
     /**
@@ -40,16 +37,10 @@ class KelasBerprosesController extends Controller
     public function store(Request $request)
     {
         $validatedData = $request->validate([
-            'user_id' => 'required',
-            'usia' => 'required',
-            'pilihan_kelasberproses' => 'required',
-            'domisili' => 'required',
-            'pekerjaan' => 'required',
-            'alasan' => 'required',
-            'pernah_gabung' => 'required',
-            'pertanyaan' => 'required',
-            'sumber_info' => 'required',
-            'bukti_transfer' => 'required',
+            'topik' => 'required',
+            'pembicara' => 'required',
+            'waktu' => 'required',
+            'biaya' => 'required'
         ]);
 
         $kelasberproses = KelasBerproses::create($validatedData);
@@ -75,8 +66,8 @@ class KelasBerprosesController extends Controller
      */
     public function show($id)
     {
-        $kelasberproses = KelasBerproses::select('kelas_berproses.id', 'kelas_berproses.user_id', 'kelas_berproses.pilihan_kelasberproses', 'kelas_berproses.bukti_transfer', 'kelas_berproses.created_at', 'kelas_berproses.updated_at', 'users.nama', 'users.foto_profil')
-        ->join('users', 'users.id', '=', 'kelas_berproses.user_id')->where('kelas_berproses.id', $id)->first();
+        $kelasberproses = KelasBerproses::select('kelas_berproses.id', 'kelas_berproses.topik', 'kelas_berproses.pembicara', 'kelas_berproses.waktu', 'kelas_berproses.biaya', 'kelas_berproses.created_at', 'kelas_berproses.updated_at')
+            ->where('kelas_berproses.id', $id)->first();
         if ($kelasberproses) {
             return response()->json([
                 'success' => true,
@@ -100,10 +91,7 @@ class KelasBerprosesController extends Controller
      */
     public function edit($id)
     {
-        return view('layanan.kelasBerproses.edit', [
-            'title' => 'Edit Data',
-            'kelasberproses' => KelasBerproses::where('id', $id)->first()
-        ]);
+        //
     }
 
     /**

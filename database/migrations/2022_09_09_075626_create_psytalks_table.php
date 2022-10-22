@@ -15,16 +15,10 @@ return new class extends Migration
     {
         Schema::create('psytalks', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('user_id')->constrained('users');
-            $table->string('usia');
-            $table->string('pilihan_webinar');
-            $table->string('domisili');
-            $table->string('pekerjaan');
-            $table->string('alasan');
-            $table->string('pernah_gabung');
-            $table->string('pertanyaan');
-            $table->string('sumber_info');
-            $table->string('bukti_transfer');
+            $table->string('topik');
+            $table->string('pembicara');
+            $table->string('waktu');
+            $table->string('biaya');
             $table->timestamps();
         });
     }

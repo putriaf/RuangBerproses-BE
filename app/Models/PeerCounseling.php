@@ -11,8 +11,8 @@ class PeerCounseling extends Model
 
     protected $guarded = ['id'];
 
-    public function peerCounseling()
+    public function regPeerCounseling()
     {
-        return $this->belongsToMany(User::class);
+        return $this->hasMany(RegistrationPeerCounseling::class, 'procounseling_id', 'id');
     }
 }

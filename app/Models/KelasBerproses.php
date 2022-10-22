@@ -11,8 +11,8 @@ class KelasBerproses extends Model
 
     protected $guarded = ['id'];
 
-    public function kelasBerproses()
+    public function regKelasBerproses()
     {
-        return $this->belongsToMany(User::class);
+        return $this->hasMany(RegistrationKelasBerproses::class, 'kb_id', 'id');
     }
 }

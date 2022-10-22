@@ -15,17 +15,9 @@ return new class extends Migration
     {
         Schema::create('peer_counselings', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('user_id')->constrained('users');
-            $table->string('status');
-            $table->string('domisili');
-            $table->string('pernah_gabung');
-            $table->string('konselor');
-            $table->string('pengalaman');
-            $table->text('keluhan');
-            $table->text('latar_belakang');
-            $table->text('tujuan');
-            $table->string('consent_sharing');
-            $table->string('consent_screening');
+            $table->string('nama_konselor');
+            $table->string('waktu');
+            $table->string('biaya');
             $table->timestamps();
         });
     }

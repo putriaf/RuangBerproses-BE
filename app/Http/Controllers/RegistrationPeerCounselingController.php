@@ -3,10 +3,9 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\RegistrationPeerCounseling;
 
-use App\Models\PeerCounseling;
-
-class PeerCounselingController extends Controller
+class RegistrationPeerCounselingController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -37,14 +36,21 @@ class PeerCounselingController extends Controller
     public function store(Request $request)
     {
         $validatedData = $request->validate([
-            'nama_konselor' => 'required',
-            'waktu' => 'required',
-            'biaya' => 'required'
+            'user_id' => 'required',
+            'peercounseling_id' => 'required',
+            'latar_belakang' => 'required',
+            'tujuan' => 'required',
+            'keluhan' => 'required',
+            'preferensi_jk_konselor' => 'required',
+            'consent_sharing' => 'required',
+            'consent_screening' => 'required',
+            'bukti_transfer' => '',
+            'status_pendaftaran' => 'required'
         ]);
 
-        $peercounseling = PeerCounseling::create($validatedData);
+        $regpeercounseling = RegistrationPeerCounseling::create($validatedData);
 
-        if ($peercounseling) {
+        if ($regpeercounseling) {
             return response()->json([
                 'success' => true,
                 'message' => 'Pendaftaran Peer Counseling Berhasil!',
@@ -65,18 +71,18 @@ class PeerCounselingController extends Controller
      */
     public function show($id)
     {
-        $peercounseling = PeerCounseling::select('peer_counselings.id', 'peer_counselings.nama_konselor', 'peer_counselings.waktu', 'peer_counselings.biaya', 'peer_counselings.created_at', 'peer_counselings.updated_at')
-            ->where('peer_counselings.id', $id)->first();
-        if ($peercounseling) {
+        $peercounselingdata = RegistrationPeerCounseling::select('registration_peer_counselings.id', 'registration_peer_counselings.user_id', 'registration_peer_counselings.peercounseling_id', 'registration_peer_counselings.latar_belakang', 'registration_peer_counselings.tujuan', 'registration_peer_counselings.keluhan', 'registration_peer_counselings.preferensi_jk_konselor', 'registration_peer_counselings.consent_sharing', 'registration_peer_counselings.consent_screening', 'registration_peer_counselings.bukti_transfer', 'registration_peer_counselings.status_pendaftaran')
+            ->join('users', 'users.id', '=', 'registration_peer_counselings.user_id')->join('peer_counselings', 'peer_counselings.id', '=', 'registration_peer_counselings.peercounseling_id')->where('registration_peer_counselings.id', $id)->first();
+        if ($peercounselingdata) {
             return response()->json([
                 'success' => true,
-                'message' => 'Detail Data Peer Counseling',
-                'data'    => $peercounseling
+                'message' => 'Detail Data Pendaftaran Peer Counseling',
+                'data'    => $peercounselingdata
             ], 200);
         } else {
             return response()->json([
                 'success' => false,
-                'message' => 'Data Peer Counseling tidak ditemukan!',
+                'message' => 'Data Pendaftaran Peer Counseling!',
                 'data'    => ''
             ], 404);
         }
@@ -103,17 +109,17 @@ class PeerCounselingController extends Controller
     public function update(Request $request, $id)
     {
         $input = $request->all();
-        $peercounseling = PeerCounseling::find($id);
-        $peercounseling->update($input);
-        if ($peercounseling) {
+        $regpeercounseling = RegistrationPeerCounseling::find($id);
+        $regpeercounseling->update($input);
+        if ($regpeercounseling) {
             return response()->json([
                 'success' => true,
-                'message' => 'Peer Counseling data has been successfully updated!',
+                'message' => 'Peer Counseling Registration data has been successfully updated!',
             ], 200);
         } else {
             return response()->json([
                 'success' => false,
-                'message' => 'Update Peer Counseling data is failed!',
+                'message' => 'Update Peer Counseling Registration data is failed!',
             ], 500);
         }
     }
@@ -126,16 +132,16 @@ class PeerCounselingController extends Controller
      */
     public function destroy($id)
     {
-        $peercounseling = PeerCounseling::destroy($id);
-        if ($peercounseling) {
+        $regpeercounseling = RegistrationPeerCounseling::destroy($id);
+        if ($regpeercounseling) {
             return response()->json([
                 'success' => true,
-                'message' => 'Peer Counseling data has been deleted!',
+                'message' => 'Peer Counseling Registration data has been deleted!',
             ], 200);
         } else {
             return response()->json([
                 'success' => false,
-                'message' => 'Delete Peer Counseling data has been failed!',
+                'message' => 'Delete Peer Counseling Registration data has been failed!',
             ], 500);
         }
     }

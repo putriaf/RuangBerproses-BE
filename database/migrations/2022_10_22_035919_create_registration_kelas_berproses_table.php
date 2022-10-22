@@ -13,15 +13,16 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('registration_pro_counselings', function (Blueprint $table) {
+        Schema::create('registration_kelas_berproses', function (Blueprint $table) {
             $table->id();
             $table->foreignId('user_id')->constrained('users');
-            $table->foreignId('procounseling_id')->constrained('professional_counselings');
-            $table->string('preferensi_jk_konselor');
-            $table->string('consent_sharing');
-            $table->string('consent_screening');
-            $table->string('bukti_transfer')->nullable();
-            $table->string('status_pendaftaran')->nullable();
+            $table->foreignId('kb_id')->constrained('kelas_berproses');
+            $table->string('alasan');
+            $table->string('asal_info');
+            $table->string('pertanyaan');
+            $table->string('bukti_transfer');
+            $table->string('status_pendaftaran');
+            $table->string('ide_topik');
             $table->timestamps();
         });
     }
@@ -33,6 +34,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('registration_pro_counselings');
+        Schema::dropIfExists('registration_kelas_berproses');
     }
 };

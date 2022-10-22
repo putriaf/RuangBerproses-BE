@@ -11,8 +11,8 @@ class ProfessionalCounseling extends Model
 
     protected $guarded = ['id'];
 
-    public function professionalCounseling()
+    public function regProfessionalCounseling()
     {
-        return $this->belongsToMany(RegistrationProCounseling::class);
+        return $this->hasMany(RegistrationProCounseling::class, 'procounseling_id', 'id');
     }
 }
