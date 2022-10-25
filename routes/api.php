@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AdminController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\LoginController;
@@ -47,6 +48,9 @@ Route::group(['middleware' => ['auth:sanctum']], function () {
 });
 
 Route::post('/register', [RegisterController::class, 'store']);
+
+// ADMIN
+Route::get('/admin', [AdminController::class, 'index']);
 
 // LAYANAN
 // Virtual Support Group 

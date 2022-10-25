@@ -36,13 +36,11 @@ class ProfessionalCounselingController extends Controller
      */
     public function store(Request $request)
     {
-        Log::info("test");
         $validatedData = $request->validate([
             'nama_konselor' => 'required',
             'waktu' => 'required',
             'biaya' => 'required'
         ]);
-        Log::info($validatedData);
 
         $professionalcounseling = ProfessionalCounseling::create($validatedData);
 
