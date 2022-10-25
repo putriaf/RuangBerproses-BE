@@ -26,13 +26,10 @@ class RegistrationProCounselingController extends Controller
      */
     public function create(Request $request)
     {
-        $user_id = $request->user()->id;
-        $profilUser = User::where('id', $user_id)->first();
         $procounselings = ProfessionalCounseling::all();
         return response()->json([
             'success' => true,
             'message' => 'Semua Data',
-            'profileUser' => $profilUser,
             'procounselings' => $procounselings
         ], 200);
     }
