@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\ProfessionalCounseling;
 use App\Models\RegistrationProCounseling;
 use Illuminate\Http\Request;
 use App\Models\User;
@@ -27,10 +28,12 @@ class RegistrationProCounselingController extends Controller
     {
         $user_id = $request->user()->id;
         $profilUser = User::where('id', $user_id)->first();
+        $procounselings = ProfessionalCounseling::all();
         return response()->json([
             'success' => true,
             'message' => 'Semua Data',
-            'profileUser' => $profilUser
+            'profileUser' => $profilUser,
+            'procounselings' => $procounselings
         ], 200);
     }
 
