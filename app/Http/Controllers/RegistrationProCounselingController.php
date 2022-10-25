@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\RegistrationProCounseling;
 use Illuminate\Http\Request;
+use App\Models\User;
 
 class RegistrationProCounselingController extends Controller
 {
@@ -22,9 +23,11 @@ class RegistrationProCounselingController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create(Request $request)
     {
-        //
+        $user_id = $request->user()->id;
+        $profilUser = User::where('id', $user_id)->first();
+        return response()->json(['profile' => $profilUser], 200);
     }
 
     /**

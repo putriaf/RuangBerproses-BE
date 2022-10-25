@@ -14,7 +14,7 @@ class UserController extends Controller
      */
     public function index(Request $request)
     {
-        $title = "My Profile";
+        $title = "Profil Saya";
         $user_id = $request->user()->id;
         $profilUser = User::where('id', $user_id)->first();
         return response()->json(['profile' => $profilUser], 200);
@@ -53,7 +53,8 @@ class UserController extends Controller
         $id = $request->user()->id;
         $profilUser = User::where('id', $id)->first();
         return response()->json([
-            'profile' => $profilUser], 200);
+            'profile' => $profilUser
+        ], 200);
     }
 
     /**
@@ -78,10 +79,9 @@ class UserController extends Controller
      */
     public function update(Request $request, $id)
     {
-        if($request->password == null){
+        if ($request->password == null) {
             $input = $request->except(['password']);
-        }
-        else{
+        } else {
             $input = $request->all();
         }
         $user = User::find($id);
