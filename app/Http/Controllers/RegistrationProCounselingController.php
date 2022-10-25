@@ -27,7 +27,11 @@ class RegistrationProCounselingController extends Controller
     {
         $user_id = $request->user()->id;
         $profilUser = User::where('id', $user_id)->first();
-        return response()->json(['profile' => $profilUser], 200);
+        return response()->json([
+            'success' => true,
+            'message' => 'Semua Data',
+            'profileUser' => $profilUser
+        ], 200);
     }
 
     /**

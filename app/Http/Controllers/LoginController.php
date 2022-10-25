@@ -18,13 +18,12 @@ class LoginController extends Controller
     }
 
     public function login(Request $request)
-    {   
+    {
         $credentials = $request->validate([
-                    'email' => 'required|email:dns',
-                    'password' => 'required'
-                ]);
-        if (!Auth::attempt($credentials))
-        {
+            'email' => 'required|email:dns',
+            'password' => 'required'
+        ]);
+        if (!Auth::attempt($credentials)) {
             return response()
                 ->json(['message' => 'Unauthorized'], 401);
         }
@@ -32,9 +31,9 @@ class LoginController extends Controller
         $user = User::where('email', $request['email'])->firstOrFail();
 
         $token = $user->createToken('auth_token')->plainTextToken;
-        
+
         return response()
-            ->json(['message' => 'Hi '.$user->name.', welcome to home','access_token' => $token, 'token_type' => 'Bearer', 'role' => $user->role, 'id' => $user->id, 'username' => $user->username, 'foto_profil' => $user->foto_profil]);
+            ->json(['message' => 'Hi ' . $user->nama . ', welcome to home', 'access_token' => $token, 'token_type' => 'Bearer', 'role' => $user->role, 'id' => $user->id, 'username' => $user->username, 'nama' => $user->nama, 'email' => $user->email, 'notelp' => $user->notelp, 'tgl_lahir' => $user->tgl_lahir, 'jk' => $user->jk, 'foto_profil' => $user->foto_profil]);
     }
 
     public function logout()
