@@ -110,6 +110,7 @@ Route::put('/admin/program/kelas-berproses/{id}', [RegistrationKelasBerprosesCon
 Route::delete('/admin/program/kelas-berproses/{id}', [RegistrationKelasBerprosesController::class, 'destroy']);
 
 // ARTIKEL
+Route::get('/artikel-berproses', [ArtikelController::class, 'index']);
 Route::post('/admin/artikel-berproses/tambah', [ArtikelController::class, 'store']);
 Route::get('/artikel-berproses/{id}', [ArtikelController::class, 'show']);
 Route::put('/admin/artikel-berproses/{id}', [ArtikelController::class, 'update']);

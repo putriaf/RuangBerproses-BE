@@ -14,7 +14,12 @@ class ArtikelController extends Controller
      */
     public function index()
     {
-        //
+        $artikels = Artikel::latest()->get();
+        return response()->json([
+            'success' => true,
+            'message' => 'Semua Artikel',
+            'artikels' => $artikels
+        ], 200);
     }
 
     /**
