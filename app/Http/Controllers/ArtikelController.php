@@ -14,7 +14,7 @@ class ArtikelController extends Controller
      */
     public function index()
     {
-        $artikels = Artikel::latest()->get();
+        $artikels = Artikel::latest()->filter(request(['search']))->withQueryString();
         return response()->json([
             'success' => true,
             'message' => 'Semua Artikel',
