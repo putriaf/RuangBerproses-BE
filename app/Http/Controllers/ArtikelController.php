@@ -18,7 +18,7 @@ class ArtikelController extends Controller
         return response()->json([
             'success' => true,
             'message' => 'Semua Artikel',
-            'artikels' => $artikels
+            'data' => $artikels
         ], 200);
     }
 
