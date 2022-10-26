@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Artikel;
 use Illuminate\Http\Request;
 
 use App\Models\ProfessionalCounseling;
@@ -34,6 +35,7 @@ class AdminController extends Controller
         $regpsytalks = RegistrationPsytalk::latest()->get();
         $kb = KelasBerproses::latest()->get();
         $regkbs = RegistrationKelasBerproses::latest()->get();
+        $artikels = Artikel::latest()->get();
         return response()->json([
             'success' => true,
             'message' => 'Semua Data',
@@ -47,6 +49,7 @@ class AdminController extends Controller
             'regpsytalks' => $regpsytalks,
             'kb' => $kb,
             'regkbs' => $regkbs,
+            'artikels' => $artikels
         ], 200);
     }
 
