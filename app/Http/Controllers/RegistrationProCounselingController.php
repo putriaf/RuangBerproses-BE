@@ -48,7 +48,7 @@ class RegistrationProCounselingController extends Controller
             'preferensi_jk_konselor' => 'required',
             'consent_sharing' => 'required',
             'consent_screening' => 'required',
-            'bukti_transfer' => '',
+            'bukti_transfer' => 'required',
             'status_pendaftaran' => 'required'
         ]);
 

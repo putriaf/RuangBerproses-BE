@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\AdminController;
+use App\Http\Controllers\ArtikelController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\LoginController;
@@ -16,6 +17,7 @@ use App\Http\Controllers\RegistrationPeerCounselingController;
 use App\Http\Controllers\RegistrationSupportGroupController;
 use App\Http\Controllers\RegistrationPsytalkController;
 use App\Http\Controllers\RegistrationKelasBerprosesController;
+use App\Models\Artikel;
 
 /*
 |--------------------------------------------------------------------------
@@ -106,3 +108,9 @@ Route::post('/program/kelas-berproses/daftar', [RegistrationKelasBerprosesContro
 Route::get('/program/kelas-berproses/{id}', [RegistrationKelasBerprosesController::class, 'show']);
 Route::put('/admin/program/kelas-berproses/{id}', [RegistrationKelasBerprosesController::class, 'update']);
 Route::delete('/admin/program/kelas-berproses/{id}', [RegistrationKelasBerprosesController::class, 'destroy']);
+
+// ARTIKEL
+Route::post('/admin/artikel-berproses/tambah', [ArtikelController::class, 'store']);
+Route::get('/artikel-berproses/{id}', [ArtikelController::class, 'show']);
+Route::put('/admin/artikel-berproses/{id}', [ArtikelController::class, 'update']);
+Route::delete('/admin/artikel-berproses/{id}', [ArtikelController::class, 'destroy']);
