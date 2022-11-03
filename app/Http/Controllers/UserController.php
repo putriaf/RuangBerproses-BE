@@ -4,6 +4,11 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\User;
+use App\Models\RegistrationProCounseling;
+use App\Models\RegistrationPeerCounseling;
+use App\Models\RegistrationSupportGroup;
+use App\Models\RegistrationPsytalk;
+use App\Models\RegistrationKelasBerproses;
 
 class UserController extends Controller
 {
@@ -17,7 +22,27 @@ class UserController extends Controller
         $title = "Profil Saya";
         $user_id = $request->user()->id;
         $profilUser = User::where('id', $user_id)->first();
-        return response()->json(['profile' => $profilUser], 200);
+        // Status Pendaftaran
+        // konfirmasi_admin: menunggu konfirmasi pembayaran oleh admin
+        // berhasil: layanan/program bisa diikuti
+        // gagal: konfirmasi tidak berhasil
+        $reg_procounseling = RegistrationProCounseling::where('user_id', $user_id)
+            ->join('professional_counselings', 'professional_counselings.id', '=', 'registration_pro_counselings.procounseling_id')
+            ->orderByRaw("FIELD(status_pendaftaran, 'berhasil', 'konfirmasi_admin', 'gagal'")
+            ->orderByRaw("IF(status = 'berhasil', professional.counselings.waktu) DESC")
+            ->get();
+        $reg_peercounseling = RegistrationPeerCounseling::where('user_id', $user_id)->get();
+        $reg_sg = RegistrationSupportGroup::where('user_id', $user_id)->get();
+        $reg_psytalk = RegistrationPsytalk::where('user_id', $user_id)->get();
+        $reg_kb = RegistrationKelasBerproses::where('user_id', $user_id)->ge();
+        return response()->json([
+            'profile' => $profilUser,
+            'reg_procounseling' => $reg_procounseling,
+            'reg_peercounseling' => $reg_peercounseling,
+            'reg_sg' => $reg_sg,
+            'reg_psytalk' => $reg_psytalk,
+            'reg_kb' => $reg_kb
+        ], 200);
     }
 
     /**
