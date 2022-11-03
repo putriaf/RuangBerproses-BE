@@ -29,7 +29,7 @@ class UserController extends Controller
         $reg_procounseling = RegistrationProCounseling::where('user_id', $user_id)
             ->join('professional_counselings', 'professional_counselings.id', '=', 'registration_pro_counselings.procounseling_id')
             ->orderByRaw("FIELD(status_pendaftaran, 'berhasil', 'konfirmasi_admin', 'gagal'")
-            ->orderByRaw("IF(status = 'berhasil', professional.counselings.waktu) DESC")
+            ->orderByRaw("IF(status = 'berhasil', professional_counselings.waktu) DESC")
             ->get();
         $reg_peercounseling = RegistrationPeerCounseling::where('user_id', $user_id)->get();
         $reg_sg = RegistrationSupportGroup::where('user_id', $user_id)->get();
