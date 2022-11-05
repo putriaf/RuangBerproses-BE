@@ -39,14 +39,9 @@ Route::post('/login', [LoginController::class, 'login']);
 
 //Protecting Routes
 Route::group(['middleware' => ['auth:sanctum']], function () {
-    // Route::get('/profile', function(Request $request) {
-    //     return auth()->user();
-    // });
-    // API route for logout user
     Route::post('/logout', 'LoginController@logout');
     Route::resource('/profile', UserController::class);
-    // Route::post('/profile/update', 'UserController@update');
-    // Route::put('/post/{post:id}', 'PostController@update');
+    Route::put('/profile/{id}', [UserController::class, 'update']);
 });
 
 Route::post('/register', [RegisterController::class, 'store']);

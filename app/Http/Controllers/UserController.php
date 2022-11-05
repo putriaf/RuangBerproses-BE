@@ -86,9 +86,7 @@ class UserController extends Controller
      */
     public function edit($username)
     {
-        $title = "Edit Profile";
-        $profilUser = User::where('username', $username)->first();
-        return response()->json([$profilUser], 200);
+        //
     }
 
     /**
@@ -106,8 +104,9 @@ class UserController extends Controller
             $input = $request->all();
         }
         $user = User::find($id);
+        dd($user);
         $user = $user->update($input);
-        $profilUser = User::where('id', $id)->first();
+        $profilUser = User::where('username', $id)->first();
         if ($user) {
             return response()->json([
                 'success' => true,
