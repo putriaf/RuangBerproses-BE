@@ -20,4 +20,9 @@ class RegistrationPeerCounseling extends Model
     {
         return $this->belongsTo(User::class);
     }
+
+    public function screening()
+    {
+        return $this->belongsTo(Screening::class);
+    }
 }

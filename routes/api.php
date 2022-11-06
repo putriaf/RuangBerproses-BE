@@ -17,7 +17,7 @@ use App\Http\Controllers\RegistrationPeerCounselingController;
 use App\Http\Controllers\RegistrationSupportGroupController;
 use App\Http\Controllers\RegistrationPsytalkController;
 use App\Http\Controllers\RegistrationKelasBerprosesController;
-use App\Models\Artikel;
+use App\Http\Controllers\ScreeningController;
 
 /*
 |--------------------------------------------------------------------------
@@ -48,6 +48,12 @@ Route::post('/register', [RegisterController::class, 'store']);
 
 // ADMIN
 Route::get('/admin', [AdminController::class, 'index']);
+
+// SCREENING
+Route::post('/screening', [ScreeningController::class, 'store']);
+Route::get('/admin/screening/{id}', [ScreeningController::class, 'show']);
+Route::put('/admin/screening/{id}', [ScreeningController::class, 'update']);
+Route::delete('/admin/screening/{id}', [ScreeningController::class, 'destroy']);
 
 // LAYANAN
 // Virtual Support Group 

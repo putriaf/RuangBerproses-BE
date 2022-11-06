@@ -58,18 +58,23 @@ class User extends Authenticatable
         return $this->hasMany(RegistrationProCounseling::class, 'user_id', 'id');
     }
 
-    public function psytalk()
+    public function regPsytalk()
     {
-        return $this->hasMany(Psytalk::class, 'user_id', 'id');
+        return $this->hasMany(RegistrationPsytalk::class, 'user_id', 'id');
     }
 
-    public function kelasBerproses()
+    public function regKelasBerproses()
     {
-        return $this->hasMany(KelasBerproses::class, 'user_id', 'id');
+        return $this->hasMany(RegistrationKelasBerproses::class, 'user_id', 'id');
     }
 
     public function artikel()
     {
         return $this->hasMany(Artikel::class, 'user_id', 'id');
+    }
+
+    public function screening()
+    {
+        return $this->hasOne(Screening::class, 'user_id', 'id');
     }
 }

@@ -2,13 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\ProfessionalCounseling;
-use App\Models\RegistrationProCounseling;
 use App\Models\Screening;
 use Illuminate\Http\Request;
-use App\Models\User;
 
-class RegistrationProCounselingController extends Controller
+class ScreeningController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -25,14 +22,9 @@ class RegistrationProCounselingController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create(Request $request)
+    public function create()
     {
-        $procounselings = ProfessionalCounseling::all();
-        return response()->json([
-            'success' => true,
-            'message' => 'Semua Data',
-            'procounselings' => $procounselings
-        ], 200);
+        //
     }
 
     /**
@@ -45,26 +37,6 @@ class RegistrationProCounselingController extends Controller
     {
         $validatedData = $request->validate([
             'user_id' => 'required',
-            'screening_id' => 'required',
-            'procounseling_id' => 'required',
-            'preferensi_jk_konselor' => 'required',
-            'consent_sharing' => 'required',
-            'consent_screening' => 'required',
-            'bukti_transfer' => 'required',
-            'status_pendaftaran' => 'required',
-            'perubahan_fisik' => 'required',
-            'perubahan_emosi' => 'required',
-            'riwayat_kecemasan' => 'required',
-            'penyakit_kronis' => 'required',
-            'konsumsi_alkohol' => 'required',
-            'konsumsi_obat' => 'required',
-            'pola_tidur' => 'required',
-            'pola_makan' => 'required',
-            'kondisi_keuangan' => 'required',
-            'ringkasan_masalah' => 'required',
-            'pernah_konseling' => 'required',
-            'menyakiti_diri' => 'required',
-            'mengakhiri_hidup' => 'required',
             'marah_sepele' => 'required',
             'mulut_kering' => 'required',
             'tdk_melihat_hal_positif' => 'required',
@@ -108,17 +80,17 @@ class RegistrationProCounselingController extends Controller
             'sulit_inisiatif' => 'required'
         ]);
 
-        $regprocounseling = RegistrationProCounseling::create($validatedData);
+        $screening = Screening::create($validatedData);
 
-        if ($regprocounseling) {
+        if ($screening) {
             return response()->json([
                 'success' => true,
-                'message' => 'Pendaftaran Professional Counseling Berhasil!',
+                'message' => 'Data screening berhasil ditambahkan!',
             ], 200);
         } else {
             return response()->json([
                 'success' => false,
-                'message' => 'Pendaftaran Professional Counseling Gagal!',
+                'message' => 'Data screening gagal ditambahkan!',
             ], 400);
         }
     }
@@ -131,18 +103,18 @@ class RegistrationProCounselingController extends Controller
      */
     public function show($id)
     {
-        $procounselingdata = RegistrationProCounseling::select('registration_pro_counselings.id', 'registration_pro_counselings.user_id', 'registration_pro_counselings.procounseling_id', 'registration_pro_counselings.consent_sharing', 'registration_pro_counselings.consent_screening', 'registration_pro_counselings.bukti_transfer', 'registration_pro_counselings.status_pendaftaran')
-            ->join('users', 'users.id', '=', 'registration_pro_counselings.user_id')->join('professional_counselings', 'professional_counselings.id', '=', 'registration_pro_counselings.procounseling_id')->where('registration_pro_counselings.id', $id)->first();
-        if ($procounselingdata) {
+        $screening = Screening::select('*')
+            ->join('users', 'users.id', '=', 'screenings.user_id')->where('screenings.id', $id)->first();
+        if ($screening) {
             return response()->json([
                 'success' => true,
-                'message' => 'Detail Data Pendaftaran Professional Counseling',
-                'data'    => $procounselingdata
+                'message' => 'Data Screening Pendaftaran Layanan',
+                'data'    => $screening
             ], 200);
         } else {
             return response()->json([
                 'success' => false,
-                'message' => 'Data Pendaftaran Professional Counseling!',
+                'message' => 'Data Screening Pendaftaran Layanan Tidak Ditemukan!',
                 'data'    => ''
             ], 404);
         }
@@ -169,17 +141,17 @@ class RegistrationProCounselingController extends Controller
     public function update(Request $request, $id)
     {
         $input = $request->all();
-        $regprofessionalcounseling = RegistrationProCounseling::find($id);
-        $regprofessionalcounseling->update($input);
-        if ($regprofessionalcounseling) {
+        $screening = Screening::find($id);
+        $screening->update($input);
+        if ($screening) {
             return response()->json([
                 'success' => true,
-                'message' => 'Professional Counseling Registration data has been successfully updated!',
+                'message' => 'Screening data has been successfully updated!',
             ], 200);
         } else {
             return response()->json([
                 'success' => false,
-                'message' => 'Update Professional Counseling Registration data is failed!',
+                'message' => 'Update Screening data is failed!',
             ], 500);
         }
     }
@@ -192,16 +164,16 @@ class RegistrationProCounselingController extends Controller
      */
     public function destroy($id)
     {
-        $regprofessionalcounseling = RegistrationProCounseling::destroy($id);
-        if ($regprofessionalcounseling) {
+        $screening = Screening::destroy($id);
+        if ($screening) {
             return response()->json([
                 'success' => true,
-                'message' => 'Professional Counseling Registration data has been deleted!',
+                'message' => 'Screening data has been deleted!',
             ], 200);
         } else {
             return response()->json([
                 'success' => false,
-                'message' => 'Delete Professional Counseling Registration data has been failed!',
+                'message' => 'Delete Screening data has been failed!',
             ], 500);
         }
     }
