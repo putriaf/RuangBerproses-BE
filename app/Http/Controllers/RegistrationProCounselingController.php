@@ -27,11 +27,14 @@ class RegistrationProCounselingController extends Controller
      */
     public function create(Request $request)
     {
+        $user_id = $request->user()->id;
+        $screening_id = Screening::where('user_id', $user_id)->get();
         $procounselings = ProfessionalCounseling::all();
         return response()->json([
             'success' => true,
             'message' => 'Semua Data',
-            'procounselings' => $procounselings
+            'screening_id' => $screening_id,
+            'procounselings' => $procounselings,
         ], 200);
     }
 
