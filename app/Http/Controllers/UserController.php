@@ -96,7 +96,7 @@ class UserController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, $username)
     {
         $id = $request->user()->id;
         if ($request->password == null) {
@@ -106,7 +106,7 @@ class UserController extends Controller
         }
         $user = User::find($id);
         $user = $user->update($input);
-        $profilUser = User::where('id', $id)->first();
+        $profilUser = User::where('username', $username)->first();
         if ($user) {
             return response()->json([
                 'success' => true,
