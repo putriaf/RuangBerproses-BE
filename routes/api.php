@@ -52,6 +52,7 @@ Route::get('/admin', [AdminController::class, 'index']);
 // SCREENING
 Route::post('/screening', [ScreeningController::class, 'store']);
 Route::get('/admin/screening/{id}', [ScreeningController::class, 'show']);
+Route::get('/admin/screening/user/{id}', [ScreeningController::class, 'showByUserID']);
 Route::put('/admin/screening/{id}', [ScreeningController::class, 'update']);
 Route::delete('/admin/screening/{id}', [ScreeningController::class, 'destroy']);
 

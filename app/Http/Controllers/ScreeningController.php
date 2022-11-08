@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Screening;
 use Illuminate\Http\Request;
+use App\Models\User;
 
 class ScreeningController extends Controller
 {
@@ -105,6 +106,26 @@ class ScreeningController extends Controller
     {
         $screening = Screening::select('*')
             ->join('users', 'users.id', '=', 'screenings.user_id')->where('screenings.id', $id)->first();
+        if ($screening) {
+            return response()->json([
+                'success' => true,
+                'message' => 'Data Screening Pendaftaran Layanan',
+                'data'    => $screening
+            ], 200);
+        } else {
+            return response()->json([
+                'success' => false,
+                'message' => 'Data Screening Pendaftaran Layanan Tidak Ditemukan!',
+                'data'    => ''
+            ], 404);
+        }
+    }
+
+    public function showByUserID($id)
+    {
+        $screening = Screening::where('user_id', $id)->first();
+        $screening = Screening::select('*')
+            ->join('users', 'users.id', '=', 'screenings.user_id')->where('screenings.user_id', $id)->first();
         if ($screening) {
             return response()->json([
                 'success' => true,
