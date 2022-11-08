@@ -41,7 +41,7 @@ Route::post('/login', [LoginController::class, 'login']);
 Route::group(['middleware' => ['auth:sanctum']], function () {
     Route::post('/logout', 'LoginController@logout');
     Route::resource('/profile', UserController::class);
-    Route::put('/profile/{id}', [UserController::class, 'update']);
+    Route::put('/profile/{username}', [UserController::class, 'update']);
 });
 
 Route::post('/register', [RegisterController::class, 'store']);

@@ -98,15 +98,15 @@ class UserController extends Controller
      */
     public function update(Request $request, $id)
     {
+        $id = $request->user()->id;
         if ($request->password == null) {
             $input = $request->except(['password']);
         } else {
             $input = $request->all();
         }
         $user = User::find($id);
-        dd($user);
         $user = $user->update($input);
-        $profilUser = User::where('username', $id)->first();
+        $profilUser = User::where('id', $id)->first();
         if ($user) {
             return response()->json([
                 'success' => true,
