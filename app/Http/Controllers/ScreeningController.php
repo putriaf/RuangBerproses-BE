@@ -121,11 +121,10 @@ class ScreeningController extends Controller
         }
     }
 
-    public function showByUserID(Request $request, $id)
+    public function showByUserID(Request $request, $user_id)
     {
-        $id = $request->user()->id;
         $screening = Screening::select('*')
-            ->join('users', 'users.id', '=', 'screenings.user_id')->where('screenings.user_id', $id)->first();
+            ->join('users', 'users.id', '=', 'screenings.user_id')->where('screenings.user_id', $user_id)->first();
         if ($screening) {
             return response()->json([
                 'success' => true,

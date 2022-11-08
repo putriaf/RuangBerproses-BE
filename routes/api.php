@@ -52,9 +52,9 @@ Route::get('/admin', [AdminController::class, 'index']);
 // SCREENING
 Route::post('/screening', [ScreeningController::class, 'store']);
 Route::get('/admin/screening/{id}', [ScreeningController::class, 'show']);
-Route::get('/admin/screening/user/{id}', [ScreeningController::class, 'showByUserID']);
+Route::get('/admin/screening/user/{user_id}', [ScreeningController::class, 'showByUserID']);
 Route::put('/admin/screening/{id}', [ScreeningController::class, 'update']);
-Route::delete('/admin/screening/{users:id}', [ScreeningController::class, 'destroy']);
+Route::delete('/admin/screening/{id}', [ScreeningController::class, 'destroy']);
 
 // LAYANAN
 // Virtual Support Group 
