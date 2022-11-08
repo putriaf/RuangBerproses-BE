@@ -25,17 +25,17 @@ class AdminController extends Controller
      */
     public function index()
     {
-        $professionalcounselings = ProfessionalCounseling::latest()->get();
-        $regprofessionalcounselings = RegistrationProCounseling::latest()->get();
-        $peercounselings = PeerCounseling::latest()->get();
-        $regpeercounselings = RegistrationPeerCounseling::latest()->get();
-        $supportgroups = SupportGroup::latest()->get();
-        $regsupportgroups = RegistrationSupportGroup::latest()->get();
-        $psytalks = Psytalk::latest()->get();
-        $regpsytalks = RegistrationPsytalk::latest()->get();
-        $kb = KelasBerproses::latest()->get();
-        $regkbs = RegistrationKelasBerproses::latest()->get();
-        $artikels = Artikel::latest()->get();
+        $professionalcounselings = ProfessionalCounseling::orderBy('id')->get();
+        $regprofessionalcounselings = RegistrationProCounseling::orderBy('id')->get();
+        $peercounselings = PeerCounseling::orderBy('id')->get();
+        $regpeercounselings = RegistrationPeerCounseling::orderBy('id')->get();
+        $supportgroups = SupportGroup::orderBy('id')->get();
+        $regsupportgroups = RegistrationSupportGroup::orderBy('id')->get();
+        $psytalks = Psytalk::orderBy('id')->get();
+        $regpsytalks = RegistrationPsytalk::orderBy('id')->get();
+        $kb = KelasBerproses::orderBy('id')->get();
+        $regkbs = RegistrationKelasBerproses::orderBy('id')->get();
+        $artikels = Artikel::orderBy('id')->get();
         return response()->json([
             'success' => true,
             'message' => 'Semua Data',

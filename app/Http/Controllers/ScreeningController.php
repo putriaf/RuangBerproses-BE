@@ -123,7 +123,6 @@ class ScreeningController extends Controller
 
     public function showByUserID($id)
     {
-        $screening = Screening::where('user_id', $id)->first();
         $screening = Screening::select('*')
             ->join('users', 'users.id', '=', 'screenings.user_id')->where('screenings.user_id', $id)->first();
         if ($screening) {
