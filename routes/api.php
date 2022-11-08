@@ -78,6 +78,7 @@ Route::put('/admin/layanan/peer-counseling/{id}', [RegistrationPeerCounselingCon
 Route::delete('/admin/layanan/peer-counseling/{id}', [RegistrationPeerCounselingController::class, 'destroy']);
 // Professional Counseling
 Route::post('/admin/layanan/procounseling-list/tambah', [ProfessionalCounselingController::class, 'store']);
+Route::get('/admin/layanan/procounseling-list', [ProfessionalCounselingController::class, 'all']);
 Route::get('/admin/layanan/procounseling-list/{id}', [ProfessionalCounselingController::class, 'show']);
 Route::put('/admin/layanan/procounseling-list/{id}', [ProfessionalCounselingController::class, 'update']);
 Route::delete('/admin/layanan/procounseling-list/{id}', [ProfessionalCounselingController::class, 'destroy']);

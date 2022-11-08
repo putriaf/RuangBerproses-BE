@@ -57,6 +57,24 @@ class ProfessionalCounselingController extends Controller
         }
     }
 
+    public function all()
+    {
+        $professionalcounseling = ProfessionalCounseling::all();
+        if ($professionalcounseling) {
+            return response()->json([
+                'success' => true,
+                'message' => 'Detail Data Professional Counseling',
+                'data'    => $professionalcounseling
+            ], 200);
+        } else {
+            return response()->json([
+                'success' => false,
+                'message' => 'Data Professional Counseling tidak ditemukan!',
+                'data'    => ''
+            ], 404);
+        }
+    }
+
     /**
      * Display the specified resource.
      *
