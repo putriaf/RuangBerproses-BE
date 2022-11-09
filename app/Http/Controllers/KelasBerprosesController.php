@@ -66,6 +66,30 @@ class KelasBerprosesController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
+    public function all()
+    {
+        $kb = KelasBerproses::all();
+        if ($kb) {
+            return response()->json([
+                'success' => true,
+                'message' => 'Data Kelas Berproses',
+                'data'    => $kb
+            ], 200);
+        } else {
+            return response()->json([
+                'success' => false,
+                'message' => 'Data Kelas Berproses tidak ditemukan!',
+                'data'    => ''
+            ], 404);
+        }
+    }
+
+    /**
+     * Display the specified resource.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
     public function show($id)
     {
         $kelasberproses = KelasBerproses::select('*')
