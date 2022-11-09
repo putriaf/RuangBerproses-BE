@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\RegistrationPsytalk;
+use App\Models\Psytalk;
 
 class RegistrationPsytalkController extends Controller
 {

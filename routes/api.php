@@ -93,6 +93,7 @@ Route::delete('/admin/layanan/professional-counseling/{id}', [RegistrationProCou
 // PROGRAM
 // Psytalk
 Route::post('/admin/program/psytalk-list/tambah', [PsytalkController::class, 'store']);
+Route::get('/admin/program/psytalk-list', [PsytalkController::class, 'all']);
 Route::get('/admin/program/psytalk-list/{id}', [PsytalkController::class, 'show']);
 Route::put('/admin/program/psytalk-list/{id}', [PsytalkController::class, 'update']);
 Route::delete('/admin/program/psytalk-list/{id}', [PsytalkController::class, 'destroy']);

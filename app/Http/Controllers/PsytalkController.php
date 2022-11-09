@@ -64,6 +64,30 @@ class PsytalkController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
+    public function all()
+    {
+        $psytalk = Psytalk::all();
+        if ($psytalk) {
+            return response()->json([
+                'success' => true,
+                'message' => 'Data Psytalk',
+                'data'    => $psytalk
+            ], 200);
+        } else {
+            return response()->json([
+                'success' => false,
+                'message' => 'Data Psytalk tidak ditemukan!',
+                'data'    => ''
+            ], 404);
+        }
+    }
+
+    /**
+     * Display the specified resource.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
     public function show($id)
     {
         $psytalk = Psytalk::select('psytalks.id', 'psytalks.topik', 'psytalks.pembicara', 'psytalks.waktu', 'psytalks.biaya', 'psytalks.created_at', 'psytalks.updated_at')
