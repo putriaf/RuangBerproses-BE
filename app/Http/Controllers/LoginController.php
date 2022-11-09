@@ -33,7 +33,7 @@ class LoginController extends Controller
         $token = $user->createToken('auth_token')->plainTextToken;
 
         return response()
-            ->json(['message' => 'Hi ' . $user->nama . ', welcome to home', 'access_token' => $token, 'token_type' => 'Bearer', 'role' => $user->role, 'id' => $user->id, 'username' => $user->username, 'nama' => $user->nama, 'email' => $user->email, 'notelp' => $user->notelp, 'tgl_lahir' => $user->tgl_lahir, 'jk' => $user->jk, 'foto_profil' => $user->foto_profil]);
+            ->json(['message' => 'Hi ' . $user->nama . ', welcome to home', 'access_token' => $token, 'token_type' => 'Bearer', 'role' => $user->role, 'id' => $user->id, 'username' => $user->username, 'nama' => $user->nama, 'email' => $user->email, 'no_telp' => $user->no_telp, 'tgl_lahir' => $user->tgl_lahir, 'jk' => $user->jk, 'foto_profil' => $user->foto_profil]);
     }
 
     public function logout()
