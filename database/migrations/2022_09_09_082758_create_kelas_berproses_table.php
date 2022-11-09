@@ -17,8 +17,10 @@ return new class extends Migration
             $table->id();
             $table->string('topik');
             $table->string('pembicara');
+            $table->string('tanggal');
             $table->string('waktu');
             $table->string('biaya');
+            $table->string('poster');
             $table->timestamps();
         });
     }

@@ -39,8 +39,10 @@ class PsytalkController extends Controller
         $validatedData = $request->validate([
             'topik' => 'required',
             'pembicara' => 'required',
+            'tanggal' => 'required',
             'waktu' => 'required',
-            'biaya' => 'required'
+            'biaya' => 'required',
+            'poster' => 'required'
         ]);
 
         $psytalk = Psytalk::create($validatedData);
@@ -90,8 +92,7 @@ class PsytalkController extends Controller
      */
     public function show($id)
     {
-        $psytalk = Psytalk::select('psytalks.id', 'psytalks.topik', 'psytalks.pembicara', 'psytalks.waktu', 'psytalks.biaya', 'psytalks.created_at', 'psytalks.updated_at')
-            ->where('psytalks.id', $id)->first();
+        $psytalk = Psytalk::select('*')->where('psytalks.id', $id)->first();
         if ($psytalk) {
             return response()->json([
                 'success' => true,

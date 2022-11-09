@@ -39,8 +39,10 @@ class KelasBerprosesController extends Controller
         $validatedData = $request->validate([
             'topik' => 'required',
             'pembicara' => 'required',
+            'tanggal' => 'required',
             'waktu' => 'required',
-            'biaya' => 'required'
+            'biaya' => 'required',
+            'poster' => 'required'
         ]);
 
         $kelasberproses = KelasBerproses::create($validatedData);
@@ -66,7 +68,7 @@ class KelasBerprosesController extends Controller
      */
     public function show($id)
     {
-        $kelasberproses = KelasBerproses::select('kelas_berproses.id', 'kelas_berproses.topik', 'kelas_berproses.pembicara', 'kelas_berproses.waktu', 'kelas_berproses.biaya', 'kelas_berproses.created_at', 'kelas_berproses.updated_at')
+        $kelasberproses = KelasBerproses::select('*')
             ->where('kelas_berproses.id', $id)->first();
         if ($kelasberproses) {
             return response()->json([
