@@ -15,6 +15,7 @@ use App\Models\SupportGroup;
 use App\Models\RegistrationSupportGroup;
 use App\Models\KelasBerproses;
 use App\Models\RegistrationKelasBerproses;
+use App\Models\Screening;
 
 class AdminController extends Controller
 {
@@ -36,6 +37,7 @@ class AdminController extends Controller
         $kb = KelasBerproses::orderBy('id')->get();
         $regkbs = RegistrationKelasBerproses::orderBy('id')->get();
         $artikels = Artikel::orderBy('id')->get();
+        $screenings = Screening::orderBy('id')->get();
         return response()->json([
             'success' => true,
             'message' => 'Semua Data',
@@ -49,7 +51,8 @@ class AdminController extends Controller
             'regpsytalks' => $regpsytalks,
             'kb' => $kb,
             'regkbs' => $regkbs,
-            'artikels' => $artikels
+            'artikels' => $artikels,
+            'screenings' => $screenings
         ], 200);
     }
 
