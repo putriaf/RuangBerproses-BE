@@ -104,6 +104,7 @@ Route::put('/admin/program/psytalk/{id}', [RegistrationPsytalkController::class,
 Route::delete('/admin/program/psytalk/{id}', [RegistrationPsytalkController::class, 'destroy']);
 // Kelas Berproses
 Route::post('/admin/program/kb-list/tambah', [KelasBerprosesController::class, 'store']);
+Route::get('/admin/program/kb-list', [KelasBerprosesController::class, 'all']);
 Route::get('/admin/program/kb-list/{id}', [KelasBerprosesController::class, 'show']);
 Route::put('/admin/program/kb-list/{id}', [KelasBerprosesController::class, 'update']);
 Route::delete('/admin/program/kb-list/{id}', [KelasBerprosesController::class, 'destroy']);
