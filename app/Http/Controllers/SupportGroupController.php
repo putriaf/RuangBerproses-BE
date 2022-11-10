@@ -43,6 +43,7 @@ class SupportGroupController extends Controller
             'topik' => 'required',
             'fasilitator_utama' => 'required',
             'fasilitator_pendamping' => 'required',
+            'tanggal' => 'required',
             'waktu' => 'required',
             'biaya' => 'required'
         ]);
@@ -70,7 +71,7 @@ class SupportGroupController extends Controller
      */
     public function show($id)
     {
-        $supportgroup = SupportGroup::select('support_groups.id', 'support_groups.topik', 'support_groups.fasilitator_utama', 'support_groups.fasilitator_pendamping', 'support_groups.waktu', 'support_groups.biaya', 'support_groups.created_at', 'support_groups.updated_at')
+        $supportgroup = SupportGroup::select('*')
             ->where('support_groups.id', $id)->first();
         if ($supportgroup) {
             return response()->json([
