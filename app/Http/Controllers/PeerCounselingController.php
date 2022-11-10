@@ -38,6 +38,7 @@ class PeerCounselingController extends Controller
     {
         $validatedData = $request->validate([
             'nama_konselor' => 'required',
+            'tanggal' => 'required',
             'waktu' => 'required',
             'biaya' => 'required'
         ]);
@@ -65,7 +66,7 @@ class PeerCounselingController extends Controller
      */
     public function show($id)
     {
-        $peercounseling = PeerCounseling::select('peer_counselings.id', 'peer_counselings.nama_konselor', 'peer_counselings.waktu', 'peer_counselings.biaya', 'peer_counselings.created_at', 'peer_counselings.updated_at')
+        $peercounseling = PeerCounseling::select('*')
             ->where('peer_counselings.id', $id)->first();
         if ($peercounseling) {
             return response()->json([

@@ -38,6 +38,7 @@ class ProfessionalCounselingController extends Controller
     {
         $validatedData = $request->validate([
             'nama_konselor' => 'required',
+            'tanggal' => 'required',
             'waktu' => 'required',
             'biaya' => 'required'
         ]);
@@ -83,7 +84,7 @@ class ProfessionalCounselingController extends Controller
      */
     public function show($id)
     {
-        $professionalcounseling = ProfessionalCounseling::select('professional_counselings.id', 'professional_counselings.nama_konselor', 'professional_counselings.waktu', 'professional_counselings.biaya', 'professional_counselings.created_at', 'professional_counselings.updated_at')->where('professional_counselings.id', $id)->first();
+        $professionalcounseling = ProfessionalCounseling::select('*')->where('professional_counselings.id', $id)->first();
         if ($professionalcounseling) {
             return response()->json([
                 'success' => true,

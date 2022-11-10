@@ -16,6 +16,7 @@ return new class extends Migration
         Schema::create('peer_counselings', function (Blueprint $table) {
             $table->id();
             $table->string('nama_konselor');
+            $table->string('tanggal');
             $table->string('waktu');
             $table->string('biaya');
             $table->timestamps();

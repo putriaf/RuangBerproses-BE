@@ -18,6 +18,7 @@ return new class extends Migration
             $table->string('topik');
             $table->string('fasilitator_utama');
             $table->string('fasilitator_pendamping')->nullable();
+            $table->string('tanggal');
             $table->string('waktu');
             $table->string('biaya');
             $table->timestamps();
