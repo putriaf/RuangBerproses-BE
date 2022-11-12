@@ -70,7 +70,7 @@ class ArtikelController extends Controller
      */
     public function show($id)
     {
-        $artikel = Artikel::select('artikels.id', 'artikels.user_id', 'artikels.judul', 'artikels.isi', 'artikels.poster', 'artikels.created_at', 'artikels.updated_at')
+        $artikel = Artikel::select('*')
             ->join('users', 'users.id', '=', 'artikels.user_id')->where('artikels.id', $id)->first();
         if ($artikel) {
             return response()->json([
