@@ -36,6 +36,7 @@ return new class extends Migration
             $table->string('pernah_konseling');
             $table->string('menyakiti_diri');
             $table->string('mengakhiri_hidup');
+            $table->string('sesi');
             $table->timestamps();
         });
     }

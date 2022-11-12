@@ -19,6 +19,7 @@ return new class extends Migration
             $table->string('tanggal');
             $table->string('waktu');
             $table->string('biaya');
+            $table->string('link_event')->nullable();
             $table->timestamps();
         });
     }

@@ -40,7 +40,8 @@ class ProfessionalCounselingController extends Controller
             'nama_konselor' => 'required',
             'tanggal' => 'required',
             'waktu' => 'required',
-            'biaya' => 'required'
+            'biaya' => 'required',
+            'link_event' => 'required'
         ]);
 
         $professionalcounseling = ProfessionalCounseling::create($validatedData);

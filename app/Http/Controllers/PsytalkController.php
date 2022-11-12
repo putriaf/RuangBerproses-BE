@@ -42,7 +42,8 @@ class PsytalkController extends Controller
             'tanggal' => 'required',
             'waktu' => 'required',
             'biaya' => 'required',
-            'poster' => 'required'
+            'poster' => 'required',
+            'link_event' => 'required'
         ]);
 
         $psytalk = Psytalk::create($validatedData);

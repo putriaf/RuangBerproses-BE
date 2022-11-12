@@ -26,6 +26,7 @@ return new class extends Migration
             $table->string('consent_screening');
             $table->string('bukti_transfer');
             $table->string('status_pendaftaran');
+            $table->string('sesi');
             $table->timestamps();
         });
     }

@@ -21,6 +21,7 @@ return new class extends Migration
             $table->string('waktu');
             $table->string('biaya');
             $table->string('poster');
+            $table->string('link_event')->nullable();
             $table->timestamps();
         });
     }

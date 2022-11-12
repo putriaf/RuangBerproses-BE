@@ -45,7 +45,8 @@ class SupportGroupController extends Controller
             'fasilitator_pendamping' => 'required',
             'tanggal' => 'required',
             'waktu' => 'required',
-            'biaya' => 'required'
+            'biaya' => 'required',
+            'link_event' => 'required'
         ]);
 
         $supportgroup = SupportGroup::create($validatedData);
