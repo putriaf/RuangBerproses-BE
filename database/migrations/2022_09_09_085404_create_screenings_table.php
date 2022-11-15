@@ -36,7 +36,7 @@ return new class extends Migration
             $table->string('mudah_tersinggung');
             $table->string('berkeringat');
             $table->string('takut_tanpa_alasan');
-            $table->string('merasa_tdk_berharga');
+            $table->string('merasa_hdp_tdk_berharga');
             $table->string('sulit_istirahat');
             $table->string('sulit_menelan');
             $table->string('tdk_menikmati_aktivitas');
@@ -49,6 +49,7 @@ return new class extends Migration
             $table->string('sulit_antusias');
             $table->string('sulit_toleransi_gangguan');
             $table->string('tegang');
+            $table->string('merasa_tdk_berharga');
             $table->string('tdk_memaklumi_halangan');
             $table->string('ketakutan');
             $table->string('tdk_ada_harapan');
