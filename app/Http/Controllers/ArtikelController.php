@@ -22,6 +22,24 @@ class ArtikelController extends Controller
         ], 200);
     }
 
+    public function getTitles()
+    {
+        $judulartikel = Artikel::select('judul');
+        if ($judulartikel) {
+            return response()->json([
+                'success' => true,
+                'message' => 'Judul Artikel',
+                'data'    => $judulartikel
+            ], 200);
+        } else {
+            return response()->json([
+                'success' => false,
+                'message' => 'Data tidak ditemukan!',
+                'data'    => ''
+            ], 404);
+        }
+    }
+
     /**
      * Show the form for creating a new resource.
      *
