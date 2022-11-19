@@ -69,7 +69,9 @@ class KelasBerprosesController extends Controller
      */
     public function all()
     {
-        $kb = KelasBerproses::all();
+        $kb = KelasBerproses::select('*')
+            ->orderBy('kbs.created_at', 'DESC')
+            ->paginate(9)->withQueryString();
         if ($kb) {
             return response()->json([
                 'success' => true,
