@@ -1,0 +1,1 @@
+Hi, your registration received by us!
