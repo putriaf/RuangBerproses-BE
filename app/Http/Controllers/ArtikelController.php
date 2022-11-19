@@ -24,7 +24,7 @@ class ArtikelController extends Controller
 
     public function getTitles()
     {
-        $judulartikel = Artikel::select('judul');
+        $judulartikel = Artikel::select('judul')->get();
         if ($judulartikel) {
             return response()->json([
                 'success' => true,
