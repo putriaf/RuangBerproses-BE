@@ -26,7 +26,7 @@ class UserController extends Controller
         // konfirmasi_admin: menunggu konfirmasi pembayaran oleh admin
         // berhasil: layanan/program bisa diikuti
         // gagal: konfirmasi tidak berhasil
-        $reg_procounseling = RegistrationProCounseling::join('professional_counselings', 'professional_counselings.id', '=', 'registration_pro_counselings.procounseling_id')->where('user_id', $user_id)->get();
+        $reg_procounseling = RegistrationProCounseling::select('registration_pro_counselings.id', 'registration_pro_counselings.status_pendaftaran', 'professional_counselings.nama_konselor', 'professional_counselings.tanggal', 'professional_counselings.waktu', 'professional_counselings.link_event')->where('user_id', $user_id)->join('professional_counselings', 'professional_counselings.id', '=', 'registration_pro_counselings.procounseling_id')->get();
         $reg_peercounseling = RegistrationPeerCounseling::where('user_id', $user_id)->get();
         $reg_sg = RegistrationSupportGroup::where('user_id', $user_id)->get();
         $reg_psytalk = RegistrationPsytalk::where('user_id', $user_id)->get();
