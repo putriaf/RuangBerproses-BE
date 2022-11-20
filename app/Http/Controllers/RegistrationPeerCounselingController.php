@@ -47,6 +47,7 @@ class RegistrationPeerCounselingController extends Controller
             'consent_screening' => 'required',
             'bukti_transfer' => '',
             'status_pendaftaran' => 'required',
+            'link_event' => 'required'
         ]);
 
         $regpeercounseling = RegistrationPeerCounseling::create($validatedData);

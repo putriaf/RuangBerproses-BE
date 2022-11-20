@@ -44,7 +44,8 @@ class RegistrationPsytalkController extends Controller
             'pertanyaan' => 'required',
             'bukti_transfer' => '',
             'status_pendaftaran' => 'required',
-            'ide_topik' => 'required'
+            'ide_topik' => 'required',
+            'link_event' => 'required'
         ]);
 
         $regpsytalk = RegistrationPsytalk::create($validatedData);

@@ -50,7 +50,8 @@ class RegistrationSupportGroupController extends Controller
             'consent_sharing' => 'required',
             'consent_screening' => 'required',
             'bukti_transfer' => '',
-            'status_pendaftaran' => 'required'
+            'status_pendaftaran' => 'required',
+            'link_event' => 'required'
         ]);
 
         $regsupportgroup = RegistrationSupportGroup::create($validatedData);
