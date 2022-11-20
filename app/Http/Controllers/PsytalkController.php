@@ -69,7 +69,7 @@ class PsytalkController extends Controller
      */
     public function all()
     {
-        $psytalk = Psytalk::all();
+        $psytalk = Psytalk::select('*')->orderBy('psytalks.created_at')->paginate(6)->withQueryString();
 
         if ($psytalk) {
             return response()->json([
