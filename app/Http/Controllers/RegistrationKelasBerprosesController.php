@@ -43,8 +43,7 @@ class RegistrationKelasBerprosesController extends Controller
             'pertanyaan' => 'required',
             'bukti_transfer' => '',
             'status_pendaftaran' => 'required',
-            'ide_topik' => 'required',
-            'link_event' => 'required'
+            'ide_topik' => 'required'
         ]);
 
         $regkb = RegistrationKelasBerproses::create($validatedData);
