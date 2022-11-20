@@ -72,6 +72,7 @@ class PsytalkController extends Controller
         $psytalk = Psytalk::select('*')
             ->orderBy('psytalks.created_at', 'DESC')
             ->paginate(9)->withQueryString();
+
         if ($psytalk) {
             return response()->json([
                 'success' => true,
