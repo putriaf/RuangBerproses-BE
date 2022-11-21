@@ -73,11 +73,7 @@ class KelasBerprosesController extends Controller
             ->orderBy('kelas_berproses.created_at', 'DESC')
             ->paginate(6)->withQueryString();
         if ($kb) {
-            return response()->json([
-                'success' => true,
-                'message' => 'Data Kelas Berproses',
-                'data'    => $kb
-            ], 200);
+            return response()->json($kb, 200);
         } else {
             return response()->json([
                 'success' => false,
