@@ -18,6 +18,12 @@ class ArtikelController extends Controller
         return response()->json($artikels, 200);
     }
 
+    public function getLatest()
+    {
+        $artikels = Artikel::select('artikels.judul', 'artikels.isi')->orderBy('artikels.created_at')->limit(4)->get();
+        return response()->json($artikels, 200);
+    }
+
     public function getTitles()
     {
         $judulartikel = Artikel::select('judul')->get();
