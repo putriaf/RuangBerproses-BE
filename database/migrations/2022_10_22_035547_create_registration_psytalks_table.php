@@ -19,10 +19,10 @@ return new class extends Migration
             $table->foreignId('psytalk_id')->constrained('psytalks');
             $table->string('alasan');
             $table->string('asal_info');
-            $table->string('pertanyaan');
+            $table->string('pertanyaan')->nullable();
             $table->string('bukti_transfer');
             $table->string('status_pendaftaran');
-            $table->string('ide_topik');
+            $table->string('ide_topik')->nullable();
             $table->timestamps();
         });
     }
