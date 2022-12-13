@@ -42,7 +42,6 @@ class RegistrationPeerCounselingController extends Controller
             'latar_belakang' => 'required',
             'tujuan' => 'required',
             'keluhan' => 'required',
-            'preferensi_jk_konselor' => 'required',
             'consent_sharing' => 'required',
             'consent_screening' => 'required',
             'bukti_transfer' => '',

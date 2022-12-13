@@ -50,7 +50,6 @@ class RegistrationProCounselingController extends Controller
             'user_id' => 'required',
             'screening_id' => 'required',
             'procounseling_id' => 'required',
-            'preferensi_jk_konselor' => 'required',
             'consent_sharing' => 'required',
             'consent_screening' => 'required',
             'bukti_transfer' => 'required',

@@ -18,7 +18,6 @@ return new class extends Migration
             $table->foreignId('user_id')->constrained('users');
             $table->foreignId('procounseling_id')->constrained('professional_counselings');
             $table->foreignId('screening_id')->constrained('screenings');
-            $table->string('preferensi_jk_konselor');
             $table->string('consent_sharing');
             $table->string('consent_screening');
             $table->string('bukti_transfer')->nullable();

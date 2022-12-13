@@ -21,7 +21,6 @@ return new class extends Migration
             $table->string('latar_belakang');
             $table->string('tujuan');
             $table->string('keluhan');
-            $table->string('preferensi_jk_konselor');
             $table->string('consent_sharing');
             $table->string('consent_screening');
             $table->string('bukti_transfer');

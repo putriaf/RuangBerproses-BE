@@ -62,7 +62,7 @@ class ProfessionalCounselingController extends Controller
 
     public function all()
     {
-        $professionalcounseling = ProfessionalCounseling::all();
+        $professionalcounseling = ProfessionalCounseling::join('counselors', 'professional_counselings.counselor_id', '=', 'counselors.id')->get();
         if ($professionalcounseling) {
             return response()->json([
                 'success' => true,
