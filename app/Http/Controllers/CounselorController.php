@@ -62,6 +62,24 @@ class CounselorController extends Controller
         }
     }
 
+    public function all()
+    {
+        $counselors = Counselor::all();
+        if ($counselors) {
+            return response()->json([
+                'success' => true,
+                'message' => 'Seluruh Data Konselor',
+                'data'    => $counselors
+            ], 200);
+        } else {
+            return response()->json([
+                'success' => false,
+                'message' => 'Tidak ada data konselor!',
+                'data'    => ''
+            ], 404);
+        }
+    }
+
     /**
      * Display the specified resource.
      *

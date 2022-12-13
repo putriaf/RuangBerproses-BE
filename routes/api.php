@@ -126,6 +126,7 @@ Route::delete('/admin/artikel-berproses/{id}', [ArtikelController::class, 'destr
 
 // COUNSELOR
 // Peer Counseling Registration Data
+Route::get('/admin/counselors', [CounselorController::class, 'all']);
 Route::post('/admin/counselor/tambah', [CounselorController::class, 'store']);
 Route::get('/admin/counselor/{id}', [CounselorController::class, 'show']);
 Route::put('/admin/counselor/{id}', [CounselorController::class, 'update']);
