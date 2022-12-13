@@ -15,9 +15,9 @@ return new class extends Migration
     {
         Schema::create('professional_counselings', function (Blueprint $table) {
             $table->id();
-            $table->string('nama_konselor');
-            $table->string('tanggal');
-            $table->string('waktu');
+            $table->string('counselor_id')->constrained('counselors');
+            $table->string('tanggal')->nullable();
+            $table->string('waktu')->nullable();
             $table->string('biaya');
             $table->string('link_event')->nullable();
             $table->timestamps();

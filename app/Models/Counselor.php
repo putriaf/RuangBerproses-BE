@@ -8,4 +8,11 @@ use Illuminate\Database\Eloquent\Model;
 class Counselor extends Model
 {
     use HasFactory;
+
+    protected $guarded = ['id'];
+
+    public function regProfessionalCounseling()
+    {
+        return $this->hasMany(RegistrationProCounseling::class, 'counselor_id', 'id');
+    }
 }

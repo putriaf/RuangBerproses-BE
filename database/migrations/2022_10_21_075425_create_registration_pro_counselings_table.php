@@ -37,6 +37,9 @@ return new class extends Migration
             $table->string('menyakiti_diri');
             $table->string('mengakhiri_hidup');
             $table->string('sesi');
+            $table->string('opsi_waktu1');
+            $table->string('opsi_waktu2');
+            $table->string('waktu_fix')->nullable();
             $table->timestamps();
         });
     }

@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\ArtikelController;
+use App\Http\Controllers\CounselorController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\LoginController;
@@ -122,3 +123,10 @@ Route::post('/admin/artikel-berproses/tambah', [ArtikelController::class, 'store
 Route::get('/artikel-berproses/{id}', [ArtikelController::class, 'show']);
 Route::put('/admin/artikel-berproses/{id}', [ArtikelController::class, 'update']);
 Route::delete('/admin/artikel-berproses/{id}', [ArtikelController::class, 'destroy']);
+
+// COUNSELOR
+// Peer Counseling Registration Data
+Route::post('/admin/counselor/tambah', [CounselorController::class, 'store']);
+Route::get('/admin/counselor/{id}', [CounselorController::class, 'show']);
+Route::put('/admin/counselor/{id}', [CounselorController::class, 'update']);
+Route::delete('/admin/counselor/{id}', [CounselorController::class, 'destroy']);

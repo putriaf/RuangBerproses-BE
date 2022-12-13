@@ -36,12 +36,13 @@ class ProfessionalCounselingController extends Controller
      */
     public function store(Request $request)
     {
+        // waktu dan biaya digunakan ketika ada jadwal psikolog (scalable)
         $validatedData = $request->validate([
-            'nama_konselor' => 'required',
-            'tanggal' => 'required',
-            'waktu' => 'required',
+            'counselor_id' => 'required',
+            'tanggal' => '',
+            'waktu' => '',
             'biaya' => 'required',
-            'link_event' => 'required'
+            'link_event' => ''
         ]);
 
         $professionalcounseling = ProfessionalCounseling::create($validatedData);

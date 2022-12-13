@@ -3,8 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Counselor;
-use App\Http\Requests\StoreCounselorRequest;
-use App\Http\Requests\UpdateCounselorRequest;
+use Illuminate\Http\Request;
 
 class CounselorController extends Controller
 {
@@ -31,12 +30,36 @@ class CounselorController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \App\Http\Requests\StoreCounselorRequest  $request
+     * @param   \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(StoreCounselorRequest $request)
+    public function store(Request $request)
     {
-        //
+        $validatedData = $request->validate([
+            'nama' => 'required',
+            'jk' => 'required',
+            'tgl_lahir' => '',
+            'riwayat_pendidikan' => 'required',
+            'lama_kerja' => 'required',
+            'pengalaman_kerja' => 'required',
+            'bidang_keahlian' => 'required',
+            'link_linkedin' => '',
+            'foto' => ''
+        ]);
+
+        $counselor = Counselor::create($validatedData);
+
+        if ($counselor) {
+            return response()->json([
+                'success' => true,
+                'message' => 'Penambahan Data Konselor Berhasil!',
+            ], 200);
+        } else {
+            return response()->json([
+                'success' => false,
+                'message' => 'Penambahan Data Konselor Gagal!',
+            ], 400);
+        }
     }
 
     /**
@@ -45,9 +68,22 @@ class CounselorController extends Controller
      * @param  \App\Models\Counselor  $counselor
      * @return \Illuminate\Http\Response
      */
-    public function show(Counselor $counselor)
+    public function show($id)
     {
-        //
+        $counselor = Counselor::select('*')->where('counselors.id', $id)->first();
+        if ($counselor) {
+            return response()->json([
+                'success' => true,
+                'message' => 'Detail Konselor',
+                'data'    => $counselor
+            ], 200);
+        } else {
+            return response()->json([
+                'success' => false,
+                'message' => 'Data Konselor tidak ditemukan!',
+                'data'    => ''
+            ], 404);
+        }
     }
 
     /**
@@ -68,7 +104,7 @@ class CounselorController extends Controller
      * @param  \App\Models\Counselor  $counselor
      * @return \Illuminate\Http\Response
      */
-    public function update(UpdateCounselorRequest $request, Counselor $counselor)
+    public function update(Request $request, Counselor $counselor)
     {
         //
     }

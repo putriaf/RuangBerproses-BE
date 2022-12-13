@@ -68,7 +68,11 @@ class RegistrationProCounselingController extends Controller
             'pernah_konseling' => 'required',
             'menyakiti_diri' => 'required',
             'mengakhiri_hidup' => 'required',
-            'sesi' => 'required'
+            'sesi' => 'required',
+            'opsi_waktu1' => 'required',
+            'opsi_waktu2' => 'required',
+            'tgl_fix' => '',
+            'waktu_fix' => '',
         ]);
 
         $regprocounseling = RegistrationProCounseling::create($validatedData);

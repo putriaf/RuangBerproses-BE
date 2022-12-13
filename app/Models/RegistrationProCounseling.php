@@ -28,6 +28,11 @@ class RegistrationProCounseling extends Model
         return $this->belongsTo(Screening::class);
     }
 
+    public function counselor()
+    {
+        return $this->belongsTo(Counselor::class);
+    }
+
     public static function boot()
     {
         parent::boot();
