@@ -16,8 +16,8 @@ return new class extends Migration
         Schema::create('artikels', function (Blueprint $table) {
             $table->id();
             $table->foreignId('user_id')->constrained('users');
-            $table->string('judul');
-            $table->string('isi');
+            $table->text('judul');
+            $table->text('isi');
             $table->string('poster');
             $table->timestamps();
         });
