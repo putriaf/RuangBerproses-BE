@@ -64,6 +64,6 @@ class DatabaseSeeder extends Seeder
             
             Kesimpulannya adalah bahwa orang tua tidak melulu benar dan orang tua tidak melulu salah, orang tua bukanlah seorang penguasa terhadap jiwa-jiwa anaknya. Berikanlah jiwa dan mental kita sebagai orang tua untuk hening sejenak dari psikis yang tergerus oleh lelahnya pencarian-pencarian yang kadang adalah merupakan ekspektasi orang lain. Belajarlah untuk membahagiakan diri sendiri sebagai orang tua.</p>',
             'poster' => 'thumbnail-artikel/pola-asuh-anak.jpg'
-        ])
+        ]);
     }
 }
