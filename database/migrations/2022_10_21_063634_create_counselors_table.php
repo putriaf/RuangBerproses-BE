@@ -18,9 +18,9 @@ return new class extends Migration
             $table->string('nama');
             $table->string('jk');
             $table->string('tgl_lahir')->nullable();
-            $table->text('riwayat_pendidikan');
-            $table->string('lama_kerja');
-            $table->string('pengalaman_kerja');
+            $table->text('riwayat_pendidikan')->nullable();
+            $table->string('lama_kerja')->nullable();
+            $table->string('pengalaman_kerja')->nullable();
             $table->string('bidang_keahlian');
             $table->string('link_linkedin')->nullable();
             $table->string('foto')->nullable();

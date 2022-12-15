@@ -5,6 +5,9 @@ namespace Database\Seeders;
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 
 use App\Models\Artikel;
+use App\Models\Counselor;
+use App\Models\ProfessionalCounseling;
+use App\Models\Psytalk;
 use Illuminate\Database\Seeder;
 use App\Models\User;
 use Illuminate\Support\Facades\Hash;
@@ -67,6 +70,88 @@ class DatabaseSeeder extends Seeder
             <p>Terdapat beberapa permasalahan mental yang terjadi pada anak, salah satu penyebabnya adalah permasalahan lingkungan yaitu kemiskinan, pelecehan anak, penelantaran anak, dan kekerasan pada anak. Kemiskinan dan permasalahan mental pada anak saling berhubungan. Di usia 5 tahun, anak dengan kondisi ekonomi menengah ke bawah cenderung memiliki IQ yang lebih rendah dan menunjukkan tingkat kecemasan, ketidakbahagiaan, dan ketakutan yang tinggi. Anak yang tinggal di lingkungan tidak layak huni, kemungkinan berisiko mengalami kelaparan, permasalahan perilaku, keterlambatan perkembangan, keterlambatan bicara, gangguan tidur, gangguan atensi, penarikan diri, agresi, permasalahan dalam interaksi sosial dan interaksi dengan teman sebayanya. Umumnya, bantuan yang dapat diberikan adalah dengan memahami kondisi anak beserta keluarga mereka, melakukan komunikasi yang baik, dan tidak bersikap menghakimi (non judgemental). Secara spesifik, para penyedia layanan kesehatan mental yang menangani klien dengan kemiskinan dapat melakukan terapi sebagai berikut:</p>
             <p>Penyedia layanan mampu memahami anak tuna wisma mengenai kondisi dan perasaan mereka. Penyedia layanan juga memberikan sikap positif, berkomunikasi dengan baik dan menghormati para anak.',
             'poster' => 'poster-artikel/konflik-ortu-anak.jpg'
+        ]);
+
+        Psytalk::create([
+            'topik' => 'Baby Blues Syndrom: Mengenal dan Upaya Menangani',
+            'pembicara' => 'Ariyanto Yanwar, M.Psi., Psikolog',
+            'tanggal' => 'Jumat, 13 Mei 2022',
+            'waktu' => '19.00 - 21.00',
+            'biaya' => 'Rp 25.000',
+            'poster' => 'poster-psytalk/psytalk64.jpeg',
+            'link-event' => 'https://meet.google.com/nnv-bjpx-cgd'
+        ]);
+
+        Psytalk::create([
+            'topik' => 'Baby Blues Syndrom: Mengenal dan Upaya Menangani',
+            'pembicara' => 'Ariyanto Yanwar, M.Psi., Psikolog',
+            'tanggal' => 'Jumat, 22 Desember 2022',
+            'waktu' => '19.00 - 21.00',
+            'biaya' => 'Rp 25.000',
+            'poster' => 'poster-psytalk/psytalk64.jpeg',
+            'link-event' => 'https://meet.google.com/nnv-bjpx-cgd'
+        ]);
+
+        Psytalk::create([
+            'topik' => 'Memahami Bahasa Cinta dalam Keluarga',
+            'pembicara' => 'Yohana Sondang Activa Hutabarat, M.Psi., Psikolog',
+            'tanggal' => 'Sabtu, 23 Desember 2022',
+            'waktu' => '10.00 - 11.00',
+            'biaya' => 'Rp 10.000',
+            'poster' => 'poster-psytalk/psytalk66.jpeg',
+            'link-event' => 'https://meet.google.com/nnv-bjpx-cgd'
+        ]);
+
+        Psytalk::create([
+            'topik' => 'Get to Know About Helicopter Parenting',
+            'pembicara' => 'Diandra Ayu, M.Psi., Psikolog',
+            'tanggal' => 'Sabtu, 27 Desember 2022',
+            'waktu' => '19.00 - 21.00',
+            'biaya' => 'Rp 15.000',
+            'poster' => 'poster-psytalk/psytalk74.jpeg',
+            'link-event' => 'https://meet.google.com/nnv-bjpx-cgd'
+        ]);
+
+        Counselor::create([
+            'nama' => 'Laurentia Wahyu Prastiti, M.Psi., Psikolog',
+            'jk' => 'P',
+            'bidang_keahlian' => 'Kecemasan, tumbuh kembang anak, pengembangan diri',
+            'link_linkedin' => 'https://www.linkedin.com/in/laurentia-wahyu-prastiti-9a4808129',
+            'foto' => 'konselor/laurentia.jpg'
+        ]);
+
+        Counselor::create([
+            'nama' => 'Rininta Meyftanoria, S.Psi, M.Psi, Psikolog',
+            'jk' => 'P',
+            'bidang_keahlian' => 'Depresi, perkembangan anak dan remaja, anxiety',
+            'link_linkedin' => 'https://www.linkedin.com/in/rininta-meyftanoria-59385231',
+            'foto' => 'konselor/rininta.jpg'
+        ]);
+
+        Counselor::create([
+            'nama' => 'Ariyanto Yanwar, M.Psi., Psikolog',
+            'jk' => 'L',
+            'bidang_keahlian' => 'Kesehatan Mental anak, Psikoedukasi Orangtua',
+            'link_linkedin' => 'https://www.linkedin.com/in/ariyantoyanwarpsikolog',
+            'foto' => 'konselor/ariyanto.png'
+        ]);
+
+        ProfessionalCounseling::create([
+            'counselor_id' => '1',
+            'biaya' => '100.000',
+            'link_event' => 'https://meet.google.com/nnv-bjpx-cgd'
+        ]);
+
+        ProfessionalCounseling::create([
+            'counselor_id' => '2',
+            'biaya' => '100.000',
+            'link_event' => 'https://meet.google.com/nnv-bjpx-cgd'
+        ]);
+
+        ProfessionalCounseling::create([
+            'counselor_id' => '3',
+            'biaya' => '100.000',
+            'link_event' => 'https://meet.google.com/nnv-bjpx-cgd'
         ]);
     }
 }
