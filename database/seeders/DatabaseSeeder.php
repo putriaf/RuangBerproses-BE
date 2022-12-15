@@ -79,7 +79,7 @@ class DatabaseSeeder extends Seeder
             'waktu' => '19.00 - 21.00',
             'biaya' => 'Rp 25.000',
             'poster' => 'poster-psytalk/psytalk64.jpeg',
-            'link-event' => 'https://meet.google.com/nnv-bjpx-cgd'
+            'link_event' => 'https://meet.google.com/nnv-bjpx-cgd'
         ]);
 
         Psytalk::create([
@@ -89,7 +89,7 @@ class DatabaseSeeder extends Seeder
             'waktu' => '19.00 - 21.00',
             'biaya' => 'Rp 25.000',
             'poster' => 'poster-psytalk/psytalk64.jpeg',
-            'link-event' => 'https://meet.google.com/nnv-bjpx-cgd'
+            'link_event' => 'https://meet.google.com/nnv-bjpx-cgd'
         ]);
 
         Psytalk::create([
@@ -99,7 +99,7 @@ class DatabaseSeeder extends Seeder
             'waktu' => '10.00 - 11.00',
             'biaya' => 'Rp 10.000',
             'poster' => 'poster-psytalk/psytalk66.jpeg',
-            'link-event' => 'https://meet.google.com/nnv-bjpx-cgd'
+            'link_event' => 'https://meet.google.com/nnv-bjpx-cgd'
         ]);
 
         Psytalk::create([
@@ -109,7 +109,7 @@ class DatabaseSeeder extends Seeder
             'waktu' => '19.00 - 21.00',
             'biaya' => 'Rp 15.000',
             'poster' => 'poster-psytalk/psytalk74.jpeg',
-            'link-event' => 'https://meet.google.com/nnv-bjpx-cgd'
+            'link_event' => 'https://meet.google.com/nnv-bjpx-cgd'
         ]);
 
         Counselor::create([
