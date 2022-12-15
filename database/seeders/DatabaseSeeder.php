@@ -63,7 +63,7 @@ class DatabaseSeeder extends Seeder
             Konsentrasi terhadap kesehatan mental orang tua saat ini menjadi penting, semakin banyak informasi yang diberikan kepada orang tua, semoga semakin orang tua faham bahwa mental yang sehat akan menjadikan pola asuh yang sehat pula. Semakin terjaga kesehatan fisik dan mental, maka akan semakin kuat proses tumbuh dan berkembang bersama. Tidak hanya orang tua tapi juga anak-anak.
             
             Kesimpulannya adalah bahwa orang tua tidak melulu benar dan orang tua tidak melulu salah, orang tua bukanlah seorang penguasa terhadap jiwa-jiwa anaknya. Berikanlah jiwa dan mental kita sebagai orang tua untuk hening sejenak dari psikis yang tergerus oleh lelahnya pencarian-pencarian yang kadang adalah merupakan ekspektasi orang lain. Belajarlah untuk membahagiakan diri sendiri sebagai orang tua.</p>',
-            'poster' => 'thumbnail-artikel/pola-asuh-anak.jpg'
+            'poster' => 'poster-artikel/pola-asuh-anak.jpg'
         ]);
     }
 }
