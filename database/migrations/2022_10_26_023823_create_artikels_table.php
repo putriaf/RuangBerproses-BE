@@ -18,7 +18,7 @@ return new class extends Migration
             $table->foreignId('user_id')->constrained('users');
             $table->text('judul');
             $table->text('isi');
-            $table->string('poster');
+            $table->string('poster')->nullable();
             $table->timestamps();
         });
     }
