@@ -64,7 +64,7 @@ class DatabaseSeeder extends Seeder
             'pembicara' => 'Ariyanto Yanwar, M.Psi., Psikolog',
             'tanggal' => 'Jumat, 22 Desember 2022',
             'waktu' => '19.00 - 21.00',
-            'biaya' => 'Rp 25.000',
+            'biaya' => '25.000',
             'poster' => 'poster-psytalk/psytalk64.jpeg',
             'link_event' => 'https://meet.google.com/nnv-bjpx-cgd'
         ]);
@@ -74,7 +74,7 @@ class DatabaseSeeder extends Seeder
             'pembicara' => 'Yohana Sondang Activa Hutabarat, M.Psi., Psikolog',
             'tanggal' => 'Sabtu, 23 Desember 2022',
             'waktu' => '10.00 - 11.00',
-            'biaya' => 'Rp 10.000',
+            'biaya' => '10.000',
             'poster' => 'poster-psytalk/psytalk66.jpeg',
             'link_event' => 'https://meet.google.com/nnv-bjpx-cgd'
         ]);
@@ -84,8 +84,8 @@ class DatabaseSeeder extends Seeder
             'pembicara' => 'Diandra Ayu, M.Psi., Psikolog',
             'tanggal' => 'Sabtu, 27 Desember 2022',
             'waktu' => '19.00 - 21.00',
-            'biaya' => 'Rp 15.000',
-            'poster' => 'poster-psytalk/psytalk74.jpeg',
+            'biaya' => '15.000',
+            'poster' => 'poster-psytalk/psytalk74.png',
             'link_event' => 'https://meet.google.com/nnv-bjpx-cgd'
         ]);
 
