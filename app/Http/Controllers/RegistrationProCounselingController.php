@@ -97,7 +97,7 @@ class RegistrationProCounselingController extends Controller
      */
     public function show($id)
     {
-        $procounselingdata = RegistrationProCounseling::select('professional_counselings.*, registration_pro_counselings.*')->join('professional_counselings', 'professional_counselings.id', '=', 'registration_pro_counselings.procounseling_id')->where('registration_pro_counselings.id', $id)->first();
+        $procounselingdata = RegistrationProCounseling::select('professional_counselings.*', 'registration_pro_counselings.*')->join('professional_counselings', 'professional_counselings.id', '=', 'registration_pro_counselings.procounseling_id')->where('registration_pro_counselings.id', $id)->first();
         if ($procounselingdata) {
             return response()->json([
                 'success' => true,
