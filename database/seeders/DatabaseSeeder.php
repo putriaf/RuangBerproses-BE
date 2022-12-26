@@ -62,7 +62,7 @@ class DatabaseSeeder extends Seeder
         Psytalk::create([
             'topik' => 'Baby Blues Syndrom: Mengenal dan Upaya Menangani',
             'pembicara' => 'Ariyanto Yanwar, M.Psi., Psikolog',
-            'tanggal' => 'Jumat, 22 Desember 2022',
+            'tanggal' => '22/12/2022',
             'waktu' => '19.00 - 21.00',
             'biaya' => '25.000',
             'poster' => 'poster-psytalk/psytalk64.jpeg',
@@ -72,7 +72,7 @@ class DatabaseSeeder extends Seeder
         Psytalk::create([
             'topik' => 'Memahami Bahasa Cinta dalam Keluarga',
             'pembicara' => 'Yohana Sondang Activa Hutabarat, M.Psi., Psikolog',
-            'tanggal' => 'Sabtu, 23 Desember 2022',
+            'tanggal' => '23/12/2022',
             'waktu' => '10.00 - 11.00',
             'biaya' => '10.000',
             'poster' => 'poster-psytalk/psytalk66.jpeg',
@@ -82,7 +82,7 @@ class DatabaseSeeder extends Seeder
         Psytalk::create([
             'topik' => 'Get to Know About Helicopter Parenting',
             'pembicara' => 'Diandra Ayu, M.Psi., Psikolog',
-            'tanggal' => 'Sabtu, 27 Desember 2022',
+            'tanggal' => '27/12/2022',
             'waktu' => '19.00 - 21.00',
             'biaya' => '15.000',
             'poster' => 'poster-psytalk/psytalk74.png',
