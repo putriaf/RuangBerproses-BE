@@ -38,7 +38,7 @@ class RegistrationPeerCounselingController extends Controller
         $validatedData = $request->validate([
             'user_id' => 'required',
             'screening_id' => 'required',
-            'peercounseling_id' => 'required',
+            'pref_jk_konselor' => 'required',
             'latar_belakang' => 'required',
             'tujuan' => 'required',
             'keluhan' => 'required',

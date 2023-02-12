@@ -13,10 +13,10 @@ class RegistrationPeerCounseling extends Model
 
     protected $guarded = ['id'];
 
-    public function peerCounseling()
-    {
-        return $this->belongsTo(PeerCounseling::class);
-    }
+    // public function peerCounseling()
+    // {
+    //     return $this->belongsTo(PeerCounseling::class);
+    // }
 
     public function users()
     {

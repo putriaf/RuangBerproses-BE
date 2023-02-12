@@ -10,9 +10,4 @@ class PeerCounseling extends Model
     use HasFactory;
 
     protected $guarded = ['id'];
-
-    public function regPeerCounseling()
-    {
-        return $this->hasMany(RegistrationPeerCounseling::class, 'procounseling_id', 'id');
-    }
 }
