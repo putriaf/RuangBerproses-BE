@@ -32,6 +32,7 @@ return new class extends Migration
             $table->string('consent_sharing');
             $table->string('bukti_transfer');
             $table->string('status_pendaftaran');
+            $table->string('waktu_fix')->nullable();
             $table->timestamps();
         });
     }
