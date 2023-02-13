@@ -27,10 +27,10 @@ class UserController extends Controller
         // berhasil: layanan/program bisa diikuti
         // gagal: konfirmasi tidak berhasil
         $reg_procounseling = RegistrationProCounseling::select('registration_pro_counselings.*', 'counselors.*', 'professional_counselings.*')->where('user_id', $user_id)->join('professional_counselings', 'professional_counselings.id', '=', 'registration_pro_counselings.procounseling_id')->join('counselors', 'counselors.id', '=', 'professional_counselings.counselor_id')->get();
-        $reg_peercounseling = RegistrationPeerCounseling::where('user_id', $user_id)->get();
-        $reg_sg = RegistrationSupportGroup::where('user_id', $user_id)->get();
+        $reg_peercounseling = RegistrationPeerCounseling::select('registration_peer_counselings.*')->where('user_id', $user_id)->get();
+        $reg_sg = RegistrationSupportGroup::select('registration_support_groups.*')->where('user_id', $user_id)->get();
         $reg_psytalk = RegistrationPsytalk::join('psytalks', 'psytalks.id', '=', 'registration_psytalks.psytalk_id')->where('user_id', $user_id)->get();
-        $reg_kb = RegistrationKelasBerproses::where('user_id', $user_id)->get();
+        $reg_kb = RegistrationKelasBerproses::join('kelas_berproses', 'kelas_berproses.id', '=', 'registration_kelas_berproses.kb_id')->where('user_id', $user_id)->get();
         return response()->json([
             'profile' => $profilUser,
             'reg_procounseling' => $reg_procounseling,
