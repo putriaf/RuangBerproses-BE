@@ -16,7 +16,8 @@ return new class extends Migration
         Schema::create('registration_support_groups', function (Blueprint $table) {
             $table->id();
             $table->foreignId('user_id')->constrained('users');
-            $table->foreignId('supportgroup_id')->constrained('support_groups');
+            $table->foreignId('screening_id')->constrained('screenings');
+            $table->string('topik');
             $table->string('tujuan');
             $table->string('alasan');
             $table->string('harapan');
@@ -26,6 +27,7 @@ return new class extends Migration
             $table->string('terlibat_aktif');
             $table->string('mengikuti_full');
             $table->string('batasan_pribadi');
+            $table->string('mengikuti_aturan');
             $table->string('consent_screening');
             $table->string('consent_sharing');
             $table->string('bukti_transfer');
