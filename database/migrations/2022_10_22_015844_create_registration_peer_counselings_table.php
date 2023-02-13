@@ -25,6 +25,7 @@ return new class extends Migration
             $table->string('consent_screening');
             $table->string('bukti_transfer')->nullable();
             $table->string('status_pendaftaran');
+            $table->string('waktu_fix')->nullable();
             $table->timestamps();
         });
     }
