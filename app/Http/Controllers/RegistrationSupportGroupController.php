@@ -37,7 +37,8 @@ class RegistrationSupportGroupController extends Controller
     {
         $validatedData = $request->validate([
             'user_id' => 'required',
-            'supportgroup_id' => 'required',
+            'screening_id' => 'required',
+            'topik' => 'required',
             'tujuan' => 'required',
             'alasan' => 'required',
             'harapan' => 'required',
@@ -47,6 +48,7 @@ class RegistrationSupportGroupController extends Controller
             'terlibat_aktif' => 'required',
             'mengikuti_full' => 'required',
             'batasan_pribadi' => 'required',
+            'mengikuti_aturan' => 'required',
             'consent_sharing' => 'required',
             'consent_screening' => 'required',
             'bukti_transfer' => '',
